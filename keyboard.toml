@@ -7,27 +7,82 @@ manufacturer = "rmk"
 chip = "nrf52840"
 
 [layout]
-# WARNING: Currently row2col/col2row is set in RMK's feature gate, configs here do nothing actually
-# row2col = true
-rows = 4
-cols = 3
-layers = 2
+rows = 10
+cols = 6
+layers = 5
 keymap = [
+    # LBASE layer
     [
-        ["A", "B", "C"],
-        ["Kc1", "Kc2", "Kc3"],
-        ["LCtrl", "MO(1)", "LShift"],
-        ["OSL(1)", "LT(2, Kc9)", "LM(1, LShift | LGui)"]
-    ],
-    [
-        ["_", "TT(1)", "TG(2)"],
-        ["_", "_", "_"],
-        ["_", "_", "_"],
-        ["_", "_", "_"]
-    ],
-]
+        ["Escape", "Kc1", "Kc2", "Kc3", "Kc4", "Kc5"],
+        ["Tab", "Q", "W", "E", "R", "T"],
+        ["LCtrl", "MT(A, LCtrl)", "MT(S,LAlt)", "MT(D,LGui)", "MT(F, LShift)", "G"],
+        ["LShift", "Z", "X", "C", "V", "B"],
+        ["__", "Kc3", "Kc4", "MO(2)", "LT(3, Space)", "__"],
 
-[storage]
+        ["Kc6", "Kc7", "Kc8", "Kc9", "Kc0", "Backspace"],
+        ["Y", "U", "I", "O", "P", "Backslash"],
+        ["H", "MT(J,RShift)", "MT(K,RGui)", "MT(L, RAlt)", "MT(Semicolon, RCtrl)", "Quote"],
+        ["N", "M", "Comma", "Dot", "Slash", "MT(Grave, RShift)"],
+        ["__", "Enter", "MO(1)", "LeftBracket", "RightBracket", "__"],
+    ],
+     #LRAISE layer (Layer 1)
+     [
+         ["Grave", "WM(Kc1, LShift)", "WM(Kc2, LShift)", "WM(Kc3, LShift)", "WM(Kc4, LShift)", "WM(Kc5, LShift)"],
+         ["_", "Kc1", "Kc2", "Kc3", "Kc4", "Kc5"],
+         ["_", "F1", "F2", "F3", "F4", "F5"],
+         ["_", "F7", "F8", "F9", "F10", "F12"],
+         ["__", "_", "_", "_", "_", "__"],
+         ["WM(Kc6, LShift)", "WM(Kc7, LShift)", "Minus", "WM(Equal, LShift)", "_", "Backspace"],
+         ["Kc6", "Kc7", "Kc8", "Kc9", "Kc0", "WM(Backslash, LShift)"],
+         ["F6", "Minus", "Equal", "LeftBracket", "RightBracket", "_"],
+         ["LeftBracket", "RightBracket", "WM(Comma, LShift)", "WM(Dot, LShift)", "WM(Slash, LShift)", "WM(Grave, RShift)"],
+         ["__", "_", "_", "_", "_", "__"],
+     ],
+    
+     # LLOWER layer (Layer 2)
+     [
+         ["Grave", "WM(Kc1, LShift)", "WM(Kc2, LShift)", "WM(Kc3, LShift)", "WM(Kc4, LShift)", "WM(Kc5, LShift)"],
+         ["MO(3)", "WM(Kc1, LShift)", "WM(Kc2, LShift)", "WM(Kc3, LShift)", "WM(Kc4, LShift)", "WM(Kc5, LShift)"],
+         ["_", "F1", "F2", "F3", "F4", "F5"],
+         ["_", "F7", "F8", "F9", "Tab", "F6"],
+         ["__", "_", "_", "_", "_", "__"],
+         ["WM(Kc6, LShift)", "WM(Kc7, LShift)", "Minus", "WM(Equal, LShift)", "_", "Backspace"],
+         ["WM(Kc6, LShift)", "WM(Kc7, LShift)", "WM(Kc8, LShift)", "WM(Kc9, LShift)", "WM(Kc0, LShift)", "WM(Backslash, LShift)"],
+         ["Backspace", "KpMinus", "KpEqual", "WM(LeftBracket, LShift)", "WM(RightBracket, LShift)", "Enter"],
+         ["WM(LeftBracket, LShift)", "WM(RightBracket, LShift)", "Comma", "Dot", "Slash", "Grave"],
+         ["__", "_", "_", "_", "_", "__"],
+     ],
+    
+     # LFUNC layer (Layer 3)
+     [
+         ["_", "F1", "F2", "F3", "F4", "F5"],
+         ["MO(4)", "_", "_", "MouseUp", "PageUp", "PageDown"],
+         ["_", "_", "MouseLeft", "MouseDown", "MouseRight", "F6"],
+         ["_", "_", "_", "_", "Home", "End"],
+         ["__", "_", "_", "_", "_", "__"],
+
+         ["Kc6", "Kc7", "Kc8", "Kc9", "Kc0", "Grave"],
+         ["_", "MouseWheelUp", "MouseWheelDown", "_", "P", "Minus"],
+         ["Left", "Down", "UP", "Right", "Semicolon", "Quote"],
+         ["MouseBtn1", "MouseBtn2", "Comma", "Dot", "Slash", "RShift"],
+         ["__", "_", "_", "_", "_", "__"],
+     ],
+    
+     # LDEBUG layer (Layer 4)
+     [
+         ["F", "F1", "F2", "F3", "F4", "F5"],
+         ["_", "_", "_", "MouseUp", "R", "T"],
+         ["_", "MouseLeft", "MouseLeft", "DebugToggle", "MouseRight", "F6"],
+         ["_", "Z", "X", "C", "Home", "Bootloader"],
+         ["__", "_", "_", "_", "_", "_"],
+
+         ["Kc6", "Kc7", "Kc8", "Kc9", "Kc0", "Grave"],
+         ["Y", "U", "I", "O", "P", "Minus"],
+         ["Left", "Down", "UP", "Down", "Semicolon", "Quote"],
+         ["N", "M", "Comma", "Dot", "Slash", "RShift"],
+         ["_", "_", "_", "_", "_", "_"]
+     ]
+]
 
 [ble]
 enabled = true
@@ -39,30 +94,35 @@ enable_hrm = true
 connection = "ble"
 
 [split.central]
-rows = 2
-cols = 2
+
+rows = 5
+cols = 6
 row_offset = 0
 col_offset = 0
 ble_addr = [0x18, 0xe2, 0x21, 0x80, 0xc0, 0xc7]
+
+## nice nanov2 pin info https://www.nologo.tech/product/otherboard/NRF52840.html#%E4%BA%A7%E5%93%81%E5%8F%82%E6%95%B0
+
+## pin 1 0
+serial = [{ instance = "UART0", tx_pin = "P0_06", rx_pin = "P0_08" }]
+
 [split.central.matrix]
-input_pins = ["P0_12", "P0_13"]
-output_pins = ["P0_14", "P0_15"]
+
+## promicro pin: 5 6 7 8 9
+input_pins = ["P0_24", "P1_00", "P0_11", "P1_04", "P1_06"]
+## promicro pin: 19 18 15 14 16 10
+output_pins = ["P0_02", "P1_15", "P1_13", "P1_11", "P0_10", "P0_09"]
 
 [[split.peripheral]]
-rows = 2
-cols = 1
-row_offset = 2
-col_offset = 2
-ble_addr = [0x7e, 0xfe, 0x73, 0x9e, 0x66, 0xe3]
-[split.peripheral.matrix]
-input_pins = ["P1_11", "P1_10"]
-output_pins = ["P0_30"]
 
-# [[split.peripheral]]
-# rows = 2
-# cols = 1
-# row_offset = 2
-# col_offset = 2
-# serial = [{ instance = "UART0", tx_pin = "PIN_0", rx_pin = "PIN_1" }]
-# input_pins = ["PIN_9", "PIN_11"]
-# output_pins = ["PIN_10"]
+rows = 5
+cols = 6
+row_offset = 0
+col_offset = 6
+ble_addr = [0x7e, 0xfe, 0x73, 0x9e, 0x66, 0xe3]
+serial = [{ instance = "UART0", tx_pin = "P0_06", rx_pin = "P0_08" }]
+
+[split.peripheral.matrix]
+
+input_pins = ["P0_24", "P1_00", "P0_11", "P1_04", "P1_06"]
+output_pins = ["P0_09", "P0_10", "P1_11", "P1_13", "P1_15", "P0_02"]
