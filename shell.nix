@@ -16,6 +16,7 @@ mkShell {
     cargo-make
     probe-rs-tools
     minicom
+    just
     #nrf-command-line-tools
     # pre-commit
     # rustPackages.clippy
