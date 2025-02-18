@@ -23,7 +23,7 @@ keymap = [
      [
          ["_", "_", "_", "_", "_", "__", "__", "_", "_", "_", "_", "_"],
          ["__", "WM(Kc1, LShift)", "WM(Kc2, LShift)", "WM(Kc3, LShift)", "WM(Kc4, LShift)", "WM(Kc5, LShift)", "WM(Kc6, LShift)", "WM(Kc7, LShift)", "WM(Kc8, LShift)", "WM(Kc9, LShift)", "WM(Kc0, LShift)", "_"],
-         ["_", "_", "_", "_", "_", "_",             "Backspace", "WM(KpMinus, LShift)", "KpPlus", "WM(LeftBracket, LShift)", "WM(RightBracket, LShift)", "_"],
+         ["_", "_", "_", "_", "_", "_",             "Backspace", "WM(Minus, LShift)", "WM(Equal, LShift)", "WM(LeftBracket, LShift)", "WM(RightBracket, LShift)", "_"],
          ["_", "F7", "F8", "F9", "Tab", "F6", "WM(LeftBracket, LShift)", "WM(RightBracket, LShift)", "WM(Comma, LShift)", "WM(Dot, LShift)", "WM(Slash, LShift)", "WM(Grave, LShift)"],
          ["Kc2", "_", "_", "_", "_", "__", "__", "_", "_", "_", "_", "Kc2"]
      ],
@@ -67,7 +67,7 @@ clear_storage = true
 enabled = true
 
 [behavior]
-enable_hrm = true
+tap_hold = { enable_hrm = true, prior_idle_time = "120ms", hold_timeout = "250ms", post_wait_time = "50ms"}
 
 [split]
 
