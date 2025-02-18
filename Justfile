@@ -1,19 +1,24 @@
 default:
-    echo "helo"
+    @just -l
 
-build:
+build: uf2
+    @echo "build all targets"
+
+uf2: release
     cargo make uf2
+
 release:
     cargo build --release
+
 debug:
-    cargo build --release
+    cargo build
 
 clean:
     cargo clean
-    rm -f *.uf2 
-    rm -f *.hex
+    @rm -f *.uf2 
+    @rm -f *.hex
 
-lflash:
+flash-left: build
     pico-dfu -y ./soflev2-rmk-central.uf2 /Volumes/NICENANO
-lright:
+flash-right: build
     pico-dfu -y ./soflev2-rmk-peripheral.uf2 /Volumes/NICENANO
