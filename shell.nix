@@ -20,6 +20,10 @@ mkShell {
     #nrf-command-line-tools
     # pre-commit
     # rustPackages.clippy
+    flip-link
+
+    # for rmkit
+    bzip2 
   ] ++ (systemBuildInputs system pkgs);
   RUST_SRC_PATH = rustPlatform.rustLibSrc;
 }
