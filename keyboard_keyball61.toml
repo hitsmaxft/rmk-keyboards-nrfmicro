@@ -1,0 +1,101 @@
+[keyboard]
+name = "keyball61"
+product_name = "keyboard61"
+vendor_id = 0x4c4b
+product_id = 0x4643
+manufacturer = "bhe"
+chip = "nrf52840"
+
+[layout]
+rows = 5
+cols = 12
+layers = 5
+keymap = [
+    # LBASE layer
+    [
+        ["Escape", "Kc1", "Kc2", "Kc3", "Kc4", "Kc5", "Kc6", "Kc7", "Kc8", "Kc9", "Kc0", "Backspace"],
+        ["Tab", "Q", "W", "E", "R", "T",                                            "Y", "U", "I", "O", "P", "Backslash"],
+        ["LCtrl", "MT(A, LCtrl)", "MT(S,LAlt)", "MT(D,LGui)", "MT(F, LShift)",      "G",    "H", "MT(J,RShift)", "MT(K,RGui)", "MT(L, RAlt)", "MT(Semicolon, RCtrl)", "Quote"],
+        ["LShift", "Z", "X", "C", "V", "B",                                         "N", "M", "Comma", "Dot", "Slash", "MT(Grave, RShift)"],
+        ["Kc1", "LAlt", "LGui", "MO(1)", "LT(3, Space)", "Kc1",                       "__", "Enter", "MO(2)", "LeftBracket", "RightBracket", "Kc1"]
+    ],
+     # LLOWER layer (Layer 2)
+     [
+         ["_", "_", "_", "_", "_", "__", "__", "_", "_", "_", "_", "_"],
+         ["__", "WM(Kc1, LShift)", "WM(Kc2, LShift)", "WM(Kc3, LShift)", "WM(Kc4, LShift)", "WM(Kc5, LShift)", "WM(Kc6, LShift)", "WM(Kc7, LShift)", "WM(Kc8, LShift)", "WM(Kc9, LShift)", "WM(Kc0, LShift)", "_"],
+         ["_", "_", "_", "_", "_", "_",             "Backspace", "WM(Minus, LShift)", "WM(Equal, LShift)", "WM(LeftBracket, LShift)", "WM(RightBracket, LShift)", "_"],
+         ["_", "F7", "F8", "F9", "Tab", "F6", "WM(LeftBracket, LShift)", "WM(RightBracket, LShift)", "WM(Comma, LShift)", "WM(Dot, LShift)", "WM(Slash, LShift)", "WM(Grave, LShift)"],
+         ["Kc2", "_", "_", "_", "_", "__", "__", "_", "_", "_", "_", "Kc2"]
+     ],
+     #LRAISE layer (Layer 3)
+     [
+         ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+         ["_", "Kc1", "Kc2", "Kc3", "Kc4", "Kc5", "Kc6", "Kc7", "Kc8", "Kc9", "Kc0", "WM(Backslash, LShift)"],
+         ["_", "F1", "F2", "F3", "F4", "F5",        "F6", "Minus", "Equal", "LeftBracket", "RightBracket", "_"],
+         ["_", "F7", "F8", "F9", "F10", "F11",      "F12", "RightBracket", "Comma", "Dot", "Slash", "Grave"],
+         ["Kc3", "_", "_", "_", "_", "__", "__", "_", "_", "_", "_", "Kc3"]
+     ],
+    
+    
+     # LFUNC layer (Layer 4)
+     [
+         ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+         ["__", "_", "_", "MouseUp",  "PageUp", "PageDown",                      "_", "MouseWheelUp", "MouseWheelDown", "__", "__", "__"],
+         ["_",      "_", "MouseLeft", "MouseDown", "MouseRight","__",              "Left", "Down", "UP", "Right", "__", "__"],
+         ["_", "_", "_", "_","Home", "End",                    "MouseBtn1", "MouseBtn2", "Comma", "Dot", "Slash", "RShift"],
+         ["Kc4", "_", "_", "_", "_", "__", "__", "_", "_", "_", "_", "Kc4"]
+     ],
+    
+     # LDEBUG layer (Layer 5)
+     [
+         ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+         ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+         ["_", "__", "__", "DebugToggle", "__", "F6", "Left", "Down", "UP", "Down", "Semicolon", "Quote"],
+         ["_", "Z", "X", "C", "Home", "Bootloader", "N", "M", "Comma", "Dot", "Slash", "RShift"],
+         ["Kc5", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "Kc5"]
+     ]
+]
+
+[storage]
+
+enabled = true
+# Set `clear_storage` to true to clear all the stored info when the keyboard boots
+clear_storage = true
+
+[ble]
+
+enabled = true
+
+[behavior]
+tap_hold = { enable_hrm = true, prior_idle_time = "120ms", hold_timeout = "250ms"}
+
+[split]
+
+connection = "ble"
+
+[split.central]
+
+rows = 5
+cols = 6
+row_offset = 0
+col_offset = 0
+ble_addr = [0x18, 0xe2, 0x21, 0x80, 0xc0, 0xc7]
+
+[split.central.matrix]
+
+input_pins = ["P0_24", "P1_00", "P0_11", "P1_04", "P1_06"]
+output_pins = ["P0_02", "P1_15", "P1_13", "P1_11", "P0_10", "P0_09"]
+
+[[split.peripheral]]
+
+rows = 5
+cols = 6
+row_offset = 0
+col_offset = 6
+ble_addr = [0x7e, 0xfe, 0x73, 0x9e, 0x66, 0xe3]
+
+[split.peripheral.matrix]
+
+input_pins = ["P0_24", "P1_00", "P0_11", "P1_04", "P1_06"]
+output_pins = ["P0_09", "P0_10", "P1_11", "P1_13", "P1_15", "P0_02"]
+
