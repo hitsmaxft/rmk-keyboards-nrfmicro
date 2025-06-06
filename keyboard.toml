@@ -7,7 +7,7 @@ manufacturer = "bhe"
 chip = "nrf52840"
 
 [layout]
-rows = 5
+rows = 6
 cols = 12
 layers = 5
 keymap = [
@@ -76,7 +76,7 @@ connection = "ble"
 [split.central]
 
 rows = 5
-cols = 6
+cols = 7
 row_offset = 0
 col_offset = 0
 ble_addr = [0x18, 0xe2, 0x21, 0x80, 0xc0, 0xc7]
@@ -87,10 +87,10 @@ ble_addr = [0x18, 0xe2, 0x21, 0x80, 0xc0, 0xc7]
 
 [split.central.matrix]
 
-## promicro pin: 5 6 7 8 9
-input_pins = ["P0_24", "P1_00", "P0_11", "P1_04", "P1_06"]
-## promicro pin: 19 18 15 14 16 10
-output_pins = ["P0_02", "P1_15", "P1_13", "P1_11", "P0_10", "P0_09"]
+## promicro pin: 4 5 6 7 8
+input_pins = ["P0_22", "P0_24", "P1_00", "P0_11", "P1_04"]
+## promicro pin: 21 20  19 18 15 14 16 
+output_pins = ["P0_31", "P0_29","P0_02", "P1_15", "P1_13", "P1_11", "P0_10" ]
 
 [[split.peripheral]]
 
@@ -103,8 +103,10 @@ ble_addr = [0x7e, 0xfe, 0x73, 0x9e, 0x66, 0xe3]
 
 [split.peripheral.matrix]
 
-input_pins = ["P0_24", "P1_00", "P0_11", "P1_04", "P1_06"]
-output_pins = ["P0_09", "P0_10", "P1_11", "P1_13", "P1_15", "P0_02"]
+## promicro pin: 3 4 5 6 7
+input_pins = ["P0_20", "P0_22", "P0_24", "P1_00", "P0_11"]
+## promicro pin: 9 8 18 19 20 21
+output_pins = ["P1_16", "P1_04", "P1_15", "P0_02", "P0_29", "P0_31"]
 
 
 
