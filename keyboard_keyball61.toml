@@ -84,7 +84,7 @@ clear_storage = true
 enabled = true
 
 [behavior]
-tap_hold = { enable_hrm = true, prior_idle_time = "120ms", hold_timeout = "250ms"}
+tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = true, prior_idle_time = "60ms", hold_timeout = "250ms"}
 
 [split]
 
