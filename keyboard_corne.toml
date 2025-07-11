@@ -1,0 +1,119 @@
+[keyboard]
+name = "corne_rmk"
+product_name = "corne_rmk"
+vendor_id = 0x4653
+product_id = 0x0001
+manufacturer = "BHE-ergo"
+chip = "nrf52840"
+vial_json = "vial_corne.json"
+
+# [behavior]
+# [[behavior]]
+# name="MT"
+# behavior = "permissive_hold"
+
+# [[behavior]]
+# name="LT"
+# behavior = "hold_on_other_press"
+
+[layout]
+
+matrix_map = """
+            (0,0) (0,1) (0,2) (0,3) (0,4) (0,5)            (4,5) (4,4) (4,3) (4,2) (4,1) (4,0) 
+            (1,0) (1,1) (1,2) (1,3) (1,4) (1,5)            (5,5) (5,4) (5,3) (5,2) (5,1) (5,0) 
+            (2,0) (2,1) (2,2) (2,3) (2,4) (2,5)            (6,5) (6,4) (6,3) (6,2) (6,1) (6,0) 
+                               (3,3) (3,4) (3,5)           (7,5) (7,4) (7,3)                
+"""
+rows = 8
+cols = 6
+layers = 5
+
+[[layer]]
+name = "base_layer" #optional name for the layer
+keys = """
+        Tab Q W E R T                                            Y U I O P Backslash
+        Escape MT(A, LCtrl) MT(S, LAlt) MT(D ,LGui) MT(F, LShift) G    H MT(J,RShift) MT(K,RGui) MT(L,RAlt) MT(Semicolon,RCtrl) Quote
+        LShift Z X C V B                                         N M Comma Dot Slash Backspace
+                               MO(3) MO(1) LT(3,Space)             Enter MO(2) Backspace
+"""
+[[layer]]
+name = "symbol_layer" #optional name for the layer
+keys = """
+        __ WM(Kc1,LShift) WM(Kc2,LShift) WM(Kc3,LShift) WM(Kc4,LShift) WM(Kc5,LShift) WM(Kc6,LShift) WM(Kc7,LShift) WM(Kc8,LShift) WM(Kc9, LShift) WM(Kc0,LShift) __
+        __ __ LeftBracket RightBracket WM(LeftBracket ,LShift) WM(RightBracket,LShift)                                            Equal WM(Minus ,LShift) Minus WM(Equal ,RShift) WM(Quote,RShift) __
+        __ __ Grave WM(Grave ,LShift) WM(Backslash ,LShift) Backslash                                          Slash WM(Slash,RShift) WM(Comma ,LShift) WM(Dot ,LShift) WM(Slash ,LShift) WM(Grave ,LShift)
+                               __ MO(4) __                        WM(Grave,RShift) MO(4) Grave
+"""
+[[layer]]
+name = "mix_layer" #optional name for the layer
+keys = """
+        __ F1 F2 F3 F4 F5                                         F6 F7 F8 F9 F10 F11 
+        __ Kc5 Kc4 Kc3 Kc2 Kc1                                    Kc6 Kc7 Kc8 Kc9 Kc0 F12
+        __ F6 Kc7 Kc8 Kc9 Kc0                                Tab RightBracket Comma Dot Slash Backspace
+                               __ MO(4) __                        __ MO(4) F12
+    
+"""
+
+[[layer]]
+name = "nav_layer" #optional name for the layer
+keys = """
+        __ __ __ MouseUp __ PageUp                                 MouseBtn1 MouseBtn2 MouseBtn3 MouseWheelUp MouseWheelDown __    
+        __ __ MouseLeft MouseDown MouseRight  PageDown             Left Down UP Right __  __
+        __ __ __ __ Home End                                       __ __ __ __ __ __
+                               __ MO(4) __                         __ MO(4) __
+"""
+[[layer]]
+name = "debug_layer" #optional name for the layer
+keys = """
+        __ __ __ __ __ __                                         __ __ __ __ __ __
+        __ __ __ DebugToggle __ F6                                Left Down UP Down Semicolon Quote
+        __ Z X C Home Bootloader                                  N M Comma Dot Slash RShift
+                               __ __ __                        __ __ __
+"""
+
+[storage]
+
+enabled = true
+# Set `clear_storage` to true to clear all the stored info when the keyboard boots
+clear_storage = false
+
+[ble]
+
+enabled = true
+
+[behavior]
+tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = true, prior_idle_time = "0ms", hold_on_other_press= true, hold_timeout = "250ms"}
+
+[split]
+
+connection = "ble"
+
+[split.central]
+
+rows = 4
+cols = 6
+row_offset = 0
+col_offset = 0
+ble_addr = [0x18, 0xe2, 0x21, 0x80, 0xc0, 0xc7]
+
+[split.central.matrix]
+
+## promicro pin: 4 5 6 7
+input_pins = ["P0_22", "P0_24", "P1_00", "P0_11"]
+## promicro pin: 21 20 19 18 15 14
+output_pins = ["P0_31", "P0_29", "P0_02", "P1_15", "P1_13", "P1_11"]
+
+[[split.peripheral]]
+
+rows = 4
+cols = 6
+row_offset = 4
+col_offset = 0
+ble_addr = [0x7e, 0xfe, 0x73, 0x9e, 0x66, 0xe3]
+
+[split.peripheral.matrix]
+
+## promicro pin: 4 5 6 7
+input_pins = ["P0_22", "P0_24", "P1_00", "P0_11"]
+## promicro pin: 21 20 19 18 15 14
+output_pins = ["P0_31", "P0_29", "P0_02", "P1_15", "P1_13", "P1_11"]
