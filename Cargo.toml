@@ -1,22 +1,23 @@
 [package]
-name = "soflev2-rmk"
+name = "keyboard-rmk"
 version = "0.1.0"
-authors = ["Haobo Gu <haobogu@outlook.com>"]
+authors = ["hitsmaxft <hitsmaxft@gmail.com>"]
 description = "Keyboard firmware written in Rust"
 homepage = "https://github.com/haobogu/rmk"
 repository = "https://github.com/haobogu/rmk"
-readme = "../../README.md"
+readme = "README.md"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
 #rmk = { path = "../rmk/rmk", git = "https://github.com/HaoboGu/rmk", branch = "main", features = [
-rmk = { path = "../rmk/rmk", default-features = false, features = [
+rmk = { path = "../rmk/rmk", default-features = true, features = [
     "nrf52840_ble",
     "split",
     "async_matrix",
     "adafruit_bl",
     #"usb_log",
+    "defmt",
     "storage",
     "col2row",
 ] }

@@ -1,3 +1,23 @@
+[env]
+
+DEVICE_NAME="corne-rmk"
+KEYBOARD_TOML_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/keyboard_corne.toml"
+VIAL_JSON_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/vial_corne.json"
+
+[env.corne]
+
+DEVICE_NAME="corne-rmk"
+KEYBOARD_TOML_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/keyboard_corne.toml"
+VIAL_JSON_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/vial_corne.json"
+
+[env.keyball]
+
+DEVICE_NAME="keyball-rmk"
+KEYBOARD_TOML_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/keyboard_keyball61.toml"
+VIAL_JSON_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/vial_corne.json"
+
+
+
 [tasks.install-llvm-tools]
 install_crate = { rustup_component_name = "llvm-tools" }
 
@@ -9,17 +29,13 @@ install_crate = { crate_name = "cargo-binutils", binary = "cargo", test_arg = [
     "objcopy",
     "--help",
 ] }
-command = "cargo"
-args = [
-    "objcopy",
-    "--release",
-    "--bin",
-    "central",
-    "--",
-    "-O",
-    "ihex",
-    "soflev2-rmk-central.hex",
-]
+script = """
+export KEYBOARD_TOML_PATH=${KEYBOARD_TOML_PATH}
+export VIAL_JSON_PATH=${VIAL_JSON_PATH}
+
+cargo objcopy --release --bin central -- \
+    -O ihex ${DEVICE_NAME}-central.hex
+"""
 dependencies = ["install-llvm-tools", "flip-link"]
 
 [tasks.objcopy-peripheral]
@@ -36,7 +52,7 @@ args = [
     "--",
     "-O",
     "ihex",
-    "soflev2-rmk-peripheral.hex",
+    "${DEVICE_NAME}-peripheral.hex",
 ]
 dependencies = ["install-llvm-tools", "flip-link"]
 
@@ -49,9 +65,9 @@ command = "cargo"
 args = [
     "hex-to-uf2",
     "--input-path",
-    "soflev2-rmk-central.hex",
+    "${DEVICE_NAME}-central.hex",
     "--output-path",
-    "soflev2-rmk-central.uf2",
+    "${DEVICE_NAME}-central.uf2",
     "--family",
     "nrf52840",
 ]
@@ -66,13 +82,21 @@ command = "cargo"
 args = [
     "hex-to-uf2",
     "--input-path",
-    "soflev2-rmk-peripheral.hex",
+    "${DEVICE_NAME}-peripheral.hex",
     "--output-path",
-    "soflev2-rmk-peripheral.uf2",
+    "${DEVICE_NAME}-peripheral.uf2",
     "--family",
     "nrf52840",
 ]
 dependencies = ["objcopy-peripheral"]
+
+[tasks.release]
+script = """
+export KEYBOARD_TOML_PATH=${KEYBOARD_TOML_PATH}
+export VIAL_JSON_PATH=${VIAL_JSON_PATH}
+
+cargo build --release 
+"""
 
 [tasks.uf2]
 dependencies = ["uf2-central", "uf2-peripheral"]
