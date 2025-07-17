@@ -30,8 +30,6 @@ install_crate = { crate_name = "cargo-binutils", binary = "cargo", test_arg = [
     "--help",
 ] }
 script = """
-export KEYBOARD_TOML_PATH=${KEYBOARD_TOML_PATH}
-export VIAL_JSON_PATH=${VIAL_JSON_PATH}
 
 cargo objcopy --release --bin central -- \
     -O ihex ${DEVICE_NAME}-central.hex
@@ -92,11 +90,22 @@ dependencies = ["objcopy-peripheral"]
 
 [tasks.release]
 script = """
-export KEYBOARD_TOML_PATH=${KEYBOARD_TOML_PATH}
-export VIAL_JSON_PATH=${VIAL_JSON_PATH}
-
 cargo build --release 
 """
 
+[tasks.build]
+args = ["build", "--verbose"]
+
 [tasks.uf2]
 dependencies = ["uf2-central", "uf2-peripheral"]
+
+[tasks.show-env]
+
+description = "Displays the active environment variables based on the selected profile."
+script = [
+    "echo '--- Current Environment Variables ---'",
+    "echo 'KEYBOARD_TOML_PATH: '${KEYBOARD_TOML_PATH}",
+    "echo 'VIAL_JSON_PATH: '${VIAL_JSON_PATH}",
+    "echo '-------------------------------------'"
+]
+
