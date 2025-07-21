@@ -80,6 +80,13 @@ clear_storage = false
 [ble]
 
 enabled = true
+battery_adc_pin = "vddh"
+#ADC_GAIN_1_2
+adc_divider_measured = 1
+adc_divider_total = 5
+
+#pub charge_state: Option<PinConfig>,
+#pub charge_led: Option<PinConfig>,
 
 [behavior]
 tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = true, prior_idle_time = "0ms", hold_on_other_press= true, hold_timeout = "250ms"}
