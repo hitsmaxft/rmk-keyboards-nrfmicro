@@ -9,7 +9,10 @@ let
     ] else [ ]);
 in with pkgs;
 mkShell {
-  shellHook = "export PATH=${"$"}PATH:~/.cargo/bin;";
+  shellHook = ''
+    export PATH=${"$"}PATH:~/.cargo/bin;
+    alias claude='sd cc'
+  '';
   buildInputs = [
     rustup
     rustfmt

@@ -11,13 +11,13 @@ license = "MIT OR Apache-2.0"
 
 [dependencies]
 #rmk = { path = "../rmk/rmk", git = "https://github.com/HaoboGu/rmk", branch = "main", features = [
-rmk = { path = "../rmk/rmk", default-features = true, features = [
+rmk = { path = "../rmk/rmk", default-features = false, features = [
     "nrf52840_ble",
     "split",
     "async_matrix",
     "adafruit_bl",
-    #"usb_log",
-    "defmt",
+    "usb_log",
+#    "defmt",
     "storage",
     "col2row",
 ] }
