@@ -53,7 +53,7 @@ keys = """
 name = "symbol_layer"
 keys = """
         __ WM(Kc1,LShift) WM(Kc2,LShift) WM(Kc3,LShift) WM(Kc4,LShift) WM(Kc5,LShift)   WM(Kc6,LShift) WM(Kc7,LShift) WM(Kc8,LShift) WM(Kc9,LShift) WM(Kc0,LShift) WM(Backslash,LShift)
-        __ __ LeftBracket RightBracket WM(LeftBracket,LShift) WM(RightBracket,LShift)    Equal WM(Minus,LShift) Minus WM(Equal,LShift) Quote __
+        __ __ LeftBracket RightBracket WM(LeftBracket,LShift) WM(RightBracket,LShift)    Equal WM(Minus,LShift) Minus WM(Equal,LShift) WM(Quote,LShift) __
         __ __ RightBracket WM(Kc9,LShift) WM(Backslash,LShift) Backslash                Slash WM(Slash,LShift) Grave WM(Grave,LShift) Quote __
                                __ __ __                                                  WM(Grave,LShift) MO(4) Grave
 """
@@ -110,7 +110,7 @@ keys = """
 
 enabled = true
 # Set `clear_storage` to true to clear all the stored info when the keyboard boots
-clear_storage = true
+clear_storage = false
 
 [ble]
 
@@ -123,7 +123,7 @@ adc_divider_total = 2806
 
 [behavior]
 
-tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = true, prior_idle_time = "30ms", hold_on_other_press= true, hold_timeout = "250ms"}
+tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = false, prior_idle_time = "30ms", hold_on_other_press= true, hold_timeout = "250ms"}
 
 [split]
 
