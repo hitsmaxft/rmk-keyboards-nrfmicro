@@ -123,7 +123,7 @@ adc_divider_total = 2806
 
 [behavior]
 
-tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = false, prior_idle_time = "30ms", hold_on_other_press= true, hold_timeout = "250ms"}
+tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = false, prior_idle_time = "70ms", hold_on_other_press=true, hold_timeout = "250ms"}
 
 [split]
 
