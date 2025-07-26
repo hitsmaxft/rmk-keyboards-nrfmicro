@@ -27,6 +27,7 @@ mkShell {
 
     # for rmkit
     bzip2 
+    tio
   ] ++ (systemBuildInputs system pkgs);
   RUST_SRC_PATH = rustPlatform.rustLibSrc;
 }
