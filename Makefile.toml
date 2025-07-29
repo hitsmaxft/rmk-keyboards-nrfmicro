@@ -33,7 +33,7 @@ install_crate = { crate_name = "cargo-binutils", binary = "cargo", test_arg = [
 script = """
 
 cargo objcopy --release --bin central -- \
-    -O ihex ${DEVICE_NAME}-central.hex
+    -O ihex target/${DEVICE_NAME}-central.hex
 """
 dependencies = ["install-llvm-tools", "flip-link"]
 
@@ -51,10 +51,15 @@ args = [
     "--",
     "-O",
     "ihex",
-    "${DEVICE_NAME}-peripheral.hex",
+    "target/${DEVICE_NAME}-peripheral.hex",
 ]
 dependencies = ["install-llvm-tools", "flip-link"]
 
+[tasks.mkfw]
+command = "mkdir"
+args = [
+    "firmware"
+]
 [tasks.uf2-central]
 install_crate = { crate_name = "cargo-hex-to-uf2", binary = "cargo", test_arg = [
     "hex-to-uf2",
@@ -64,13 +69,13 @@ command = "cargo"
 args = [
     "hex-to-uf2",
     "--input-path",
-    "${DEVICE_NAME}-central.hex",
+    "target/${DEVICE_NAME}-central.hex",
     "--output-path",
-    "${DEVICE_NAME}-central.uf2",
+    "firmware/${DEVICE_NAME}-central.uf2",
     "--family",
     "nrf52840",
 ]
-dependencies = ["objcopy-central"]
+dependencies = ["objcopy-central", "mkfw"]
 
 [tasks.uf2-peripheral]
 install_crate = { crate_name = "cargo-hex-to-uf2", binary = "cargo", test_arg = [
@@ -81,13 +86,13 @@ command = "cargo"
 args = [
     "hex-to-uf2",
     "--input-path",
-    "${DEVICE_NAME}-peripheral.hex",
+    "target/${DEVICE_NAME}-peripheral.hex",
     "--output-path",
-    "${DEVICE_NAME}-peripheral.uf2",
+    "firmware/${DEVICE_NAME}-peripheral.uf2",
     "--family",
     "nrf52840",
 ]
-dependencies = ["objcopy-peripheral"]
+dependencies = ["objcopy-peripheral", "mkfw"]
 
 [tasks.release]
 script = """

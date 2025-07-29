@@ -16,8 +16,8 @@ rmk = { path = "../rmk/rmk", default-features = false, features = [
     "split",
     "async_matrix",
     "adafruit_bl",
-    #"usb_log",
-    "defmt",
+    "usb_log",
+    #"defmt",
     "storage",
     "col2row",
 ] }
