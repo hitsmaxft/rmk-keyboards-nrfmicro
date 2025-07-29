@@ -37,6 +37,7 @@ cargo objcopy --release --bin central -- \
 """
 dependencies = ["install-llvm-tools", "flip-link"]
 
+
 [tasks.objcopy-peripheral]
 install_crate = { crate_name = "cargo-binutils", binary = "cargo", test_arg = [
     "objcopy",
@@ -111,3 +112,4 @@ script = [
     "echo export KEYBOARD_TOML_PATH=${KEYBOARD_TOML_PATH}",
     "echo export VIAL_JSON_PATH=${VIAL_JSON_PATH}",
 ]
+
