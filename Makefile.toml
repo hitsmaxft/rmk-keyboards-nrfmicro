@@ -18,7 +18,6 @@ KEYBOARD_TOML_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/keyboard_keyball61.toml"
 VIAL_JSON_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/vial_corne.json"
 
 
-
 [tasks.install-llvm-tools]
 install_crate = { rustup_component_name = "llvm-tools" }
 
@@ -59,6 +58,7 @@ dependencies = ["install-llvm-tools", "flip-link"]
 [tasks.mkfw]
 command = "mkdir"
 args = [
+    "-p",
     "firmware"
 ]
 [tasks.uf2-central]
@@ -112,4 +112,15 @@ script = [
     "echo export KEYBOARD_TOML_PATH=${KEYBOARD_TOML_PATH}",
     "echo export VIAL_JSON_PATH=${VIAL_JSON_PATH}",
 ]
+
+
+[tasks.expand-main]
+script = """
+cargo expand --release --bin central
+"""
+
+[tasks.expand-ph]
+script = """
+cargo expand --release --bin peripheral
+"""
 
