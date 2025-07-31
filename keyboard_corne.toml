@@ -35,8 +35,8 @@ layers = 8
 name = "base_layer"
 keys = """
         Tab Q W E R T                                                Y U I O P Backslash
-        Escape MT(A,LCtrl) MT(S,LAlt) MT(D,LGui) MT(F,LShift) G    H MT(J,RShift) MT(K,RGui) MT(L,RAlt) MT(Semicolon,RCtrl) Quote
-        MO(4) MT(Z,LGui) X C V B                                    N M Comma Dot Slash Backspace
+        Escape HRM(A,LCtrl) HRM(S,LAlt) HRM(D,LGui) HRM(F,LShift) G    H HRM(J,RShift) HRM(K,RGui) HRM(L,RAlt) HRM(Semicolon,RCtrl) Quote
+        MO(4) HRM(Z,LGui) X C V B                                    N M Comma Dot Slash Backspace
                                LT(6,Escape) MO(2) LT(5,Space)         Enter MO(3) LT(2,Backspace)
 """
 [[layer]]
@@ -44,7 +44,7 @@ keys = """
 name = "windows_layer"
 keys = """
         __ __ __ __ __ __                                             __ __ __ __ __ __
-        __ MT(A,LCtrl) MT(S,LAlt) MT(D,LCtrl) MT(F,LShift) __       __ MT(J,RShift) MT(K,RCtrl) MT(L,RAlt) MT(Semicolon,RCtrl) __
+        __ HRM(A,LCtrl) HRM(S,LAlt) HRM(D,LCtrl) HRM(F,LShift) __       __ HRM(J,RShift) HRM(K,RCtrl) HRM(L,RAlt) HRM(Semicolon,RCtrl) __
         LGui __ __ __ __ __                                          __ __ __ __ __ __
                                __ __ __                                __ __ __
 """
@@ -124,7 +124,7 @@ default_tx_power = 8
 
 [behavior]
 
-tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = true, prior_idle_time = "100ms", hold_on_other_press=true, hold_timeout = "250ms"}
+tap_hold = { enable_hrm = true, permissive_hold = true, unilateral_tap = true, prior_idle_time = "100ms", hold_on_other_press=true, hold_timeout = "250ms"}
 
 [split]
 
