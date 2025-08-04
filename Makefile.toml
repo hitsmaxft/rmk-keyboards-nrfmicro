@@ -119,8 +119,15 @@ script = """
 cargo expand --release --bin central
 """
 
-[tasks.expand-ph]
+[tasks.flash-main]
 script = """
-cargo expand --release --bin peripheral
+pico-dfu -y firmware/${DEVICE_NAME}-central.uf2
 """
+dependencies = ["uf2"]
 
+
+[tasks.flash-peripheral]
+script = """
+pico-dfu -y firmware/${DEVICE_NAME}-peripheral.uf2
+"""
+dependencies = ["uf2"]
