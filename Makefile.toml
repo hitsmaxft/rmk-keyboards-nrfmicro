@@ -123,11 +123,11 @@ cargo expand --release --bin central
 script = """
 pico-dfu -y firmware/${DEVICE_NAME}-central.uf2
 """
-dependencies = ["uf2"]
+dependencies = ["uf2-central"]
 
 
 [tasks.flash-peripheral]
 script = """
 pico-dfu -y firmware/${DEVICE_NAME}-peripheral.uf2
 """
-dependencies = ["uf2"]
+dependencies = ["uf2-peripheral"]

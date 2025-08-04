@@ -124,7 +124,7 @@ default_tx_power = 8
 
 [behavior]
 
-tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = true, prior_idle_time = "100ms", hold_on_other_press=true, hold_timeout = "250ms"}
+tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = true, prior_idle_time = "60ms", hold_on_other_press=true, hold_timeout = "200ms"}
 
 [split]
 
