@@ -10,6 +10,11 @@ DEVICE_NAME="corne-rmk"
 KEYBOARD_TOML_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/keyboard_corne.toml"
 VIAL_JSON_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/vial_corne.json"
 
+[env.velvet]
+
+DEVICE_NAME="velvet-rmk"
+KEYBOARD_TOML_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/keyboard_velvet.toml"
+VIAL_JSON_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/vial_velvet.json"
 
 [env.keyball]
 
