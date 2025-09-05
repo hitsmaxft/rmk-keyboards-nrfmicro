@@ -33,20 +33,20 @@ layers = 8
 #layer-0
 name = "Qwer-Mac"
 keys = """
-        Tab Q W E R T                                                                            Y U I O P CapsLock
-        LCtrl A HMR(S,LAlt) HMR(D,LShift) F G                 H J HMR(K,RShift) HMR(L,RAlt) SHIFTED(Semicolon) RCtrl
-        LGui Z X C V B                                                             N M Comma Dot SHIFTED(Slash) RGui
-             LT(2,Escape) LT(6,Space) LT(3,Backslash)         SHIFTED(Quote) LT(4,Enter) LT(5,Backspace)
+        Tab Q W E R T                                                                    Y U I O P CapsLock
+        LCtrl A HMR(S,LAlt) HMR(D,LShift) F G                 H J HMR(K,RShift) HMR(L,RAlt) Semicolon RCtrl
+        LGui Z X C V B                                                             N M Comma Dot Slash RGui
+             LT(2,Escape) LT(6,Space) LT(3,Backslash)         Quote LT(4,Enter) LT(5,Backspace)
 """
 
 [[layer]]
 #layer-1
 name = "Qwer-Win"
 keys = """
-        Tab Q W E R T                                                                            Y U I O P CapsLock
-        LCtrl A HMR(S,LAlt) HMR(D,LShift) F G                 H J HMR(K,RShift) HMR(L,RAlt) SHIFTED(Semicolon) RCtrl
-        LGui Z X C V B                                                             N M Comma Dot SHIFTED(Slash) RGui
-             LT(2,Escape) LT(7,Space) LT(3,Backslash)         SHIFTED(Quote) LT(4,Enter) LT(5,Backspace)
+        Tab Q W E R T                                                                   Y U I O P CapsLock
+        LCtrl A HMR(S,LAlt) HMR(D,LShift) F G                 H J HMR(K,RShift) HMR(L,RAlt) Semicolon RCtrl
+        LGui Z X C V B                                                             N M Comma Dot Slash RGui
+             LT(2,Escape) LT(7,Space) LT(3,Backslash)         Quote LT(4,Enter) LT(5,Backspace)
 """
 [[layer]]
 #layer-2
@@ -62,35 +62,35 @@ keys = """
 #layer-3
 name = "Nav"
 keys = """
-        __ No Home Up End No                                  No No No No No No
-        __ No Left Down Right No                              No No No No No No
-        __ No PageDown No PageUp No                           No No No No No No
+        __ No Home Up End No                                  No No No No No __
+        __ No Left Down Right No                              No No No No No __
+        __ No PageDown No PageUp No                           No No No No No __
                               No No No                        No No No
 """
 [[layer]]
 #layer-4
 name = "Num"
 keys = """
-        __ No 7 8 9 0                                         
-        __ Slash 4 5 6 Minus                                           TG(1) TO(0) __ __ __ TG(1)
-        __ Quote 1 2 3 Equal                                           __ __ __ __ __ CapsLock
-                               __ __ __                               __ __ Kc4
+        __ No 7 8 9 0                                         No No No No No __
+        __ Slash 4 5 6 Minus                                  No No No No No __
+        __ Quote 1 2 3 Equal                                  No No No No No __
+                  LeftBracket RightBracket Grave              No No No
 """
 [[layer]]
-#layer 5 - Navigation
-name = "navigation_layer"
+#layer-5
+name = "Sym"
 keys = """
-        __ __ __ MouseUp PageUp PageDown                            MouseBtn1 MouseBtn3 MouseBtn2 MouseWheelUp MouseWheelDown __
-        __ __ MouseLeft MouseDown MouseRight MouseWheelUp           Left Down Up Right __ __
-        __ __ __ __ __ MouseWheelDown                               __ __ __ __ __ __
-                               MO(7) __ __                          __ __ Kc5
+        __ No SHIFTED(7) SHIFTED(8) SHIFTED(9) SHIFTED(0)                     No No No No No __
+        __ SHIFTED(Slash) SHIFTED(4) SHIFTED(5) SHIFTED(6) SHIFTED(Minus)     No No No No No __
+        __ SHIFTED(Quote) SHIFTED(1) SHIFTED(2) SHIFTED(3) SHIFTED(Equal)     No No No No No __
+             SHIFTED(LeftBracket) SHIFTED(RightBracket) SHIFTED(Grave)        No No No
 """
 
 [[layer]]
-#layer 6 - Number/Keypad
-name = "number_layer"
+#layer-6
+name = "Edit-Mac"
 keys = """
-        MO(7) __ __ __ __ __                                        Kp7 Kp8 Kp9 KpMinus KpAsterisk __
+        __ __ __ __ __ __                                        Kp7 Kp8 Kp9 KpMinus KpAsterisk __
         __ __ __ __ __ __                                           Kp4 Kp5 Kp6 KpPlus KpSlash __
         __ __ __ __ __ __                                           Kp1 Kp2 Kp3 __ __ __
                                __ __ __                             Kp0 KpDot Kp0
