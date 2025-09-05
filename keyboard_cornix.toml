@@ -53,7 +53,7 @@ keys = """
 name = "Fun"
 keys = """
         No @Bt1 @Bt2 @Bt3 No No                               F10 F7 F8 F9 No No
-        __ No No No No No                                     F11 F4 F5 F6 No No
+        __ No LAlt LShift No No                                     F11 F4 F5 F6 No No
         __ @BtClear @BtClear No OutputBluetooth OutputUsb     F12 F1 F2 F3 TO(0) TO(1)
                               No No No                        No No Delete
 """
@@ -90,20 +90,20 @@ keys = """
 #layer-6
 name = "Edit-Mac"
 keys = """
-        __ __ __ __ __ __                                        Kp7 Kp8 Kp9 KpMinus KpAsterisk __
-        __ __ __ __ __ __                                           Kp4 Kp5 Kp6 KpPlus KpSlash __
-        __ __ __ __ __ __                                           Kp1 Kp2 Kp3 __ __ __
-                               __ __ __                             Kp0 KpDot Kp0
+        __ LALT(Q) LALT(W) LALT(E) LALT(R) LALT(T)            LALT(Y) No No No No __
+        __ LALT(A) LALT(S) LALT(D) LALT(F) LALT(G)            LALT(H) No No No No __
+        __ LALT(Z) LALT(X) LALT(C) LALT(V) LALT(B)            LALT(N) No No No No __
+                              No No No                        No No No
 """
 
 [[layer]]
-#layer 7 - Debug
-name = "debug_layer"
+#layer-7
+name = "Edit-Win"
 keys = """
-        __ __ __ __ __ __                                           __ __ __ __ __ __
-        __ __ __ __ __ __                                           __ __ __ __ __ __
-        __ __ __ __ __ Bootloader                                   Bootloader __ __ __ __ __
-                               __ __ __                               __ __ Kc7
+        __ LCTRL(Q) LCTRL(W) LCTRL(E) LCTRL(R) LCTRL(T)       LCTRL(Y) No No No No __
+        __ LCTRL(A) LCTRL(S) LCTRL(D) LCTRL(F) LCTRL(G)       LCTRL(H) No No No No __
+        __ LCTRL(Z) LCTRL(X) LCTRL(C) LCTRL(V) LCTRL(B)       LCTRL(N) No No No No __
+                              No No No                        No No No
 """
 
 [storage]
