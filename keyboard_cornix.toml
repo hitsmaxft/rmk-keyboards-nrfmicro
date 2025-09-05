@@ -52,9 +52,9 @@ keys = """
 #layer-2
 name = "Fun"
 keys = """
-        No BT1 BT2 BT3 No No                                  F10 F7 F8 F9 No No
+        No @Bt1 @Bt2 @Bt3 No No                               F10 F7 F8 F9 No No
         __ No No No No No                                     F11 F4 F5 F6 No No
-        __ BtClear BtClear No OutputBluetooth OutputUsb       F12 F1 F2 F3 TO(0) TO(1)
+        __ @BtClear @BtClear No OutputBluetooth OutputUsb     F12 F1 F2 F3 TO(0) TO(1)
                               No No No                        No No Delete
 """
 
@@ -68,8 +68,8 @@ keys = """
                               No No No                        No No No
 """
 [[layer]]
-#layer 4 - Adjust
-name = "adjust_layer"
+#layer-4
+name = "Num"
 keys = """
         @Bt1 @BtPre __ __ __ __                                           __ __ __ __ __ __
         @Bt2 @BtNext __ __ __ __                                           TG(1) TO(0) __ __ __ TG(1)
