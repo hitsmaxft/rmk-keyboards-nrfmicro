@@ -90,20 +90,20 @@ keys = """
 #layer-6
 name = "Edit-Mac"
 keys = """
-        __ LALT(Q) LALT(W) LALT(E) LALT(R) LALT(T)            LALT(Y) No No No No __
-        __ LALT(A) LALT(S) LALT(D) LALT(F) LALT(G)            LALT(H) No No No No __
-        __ LALT(Z) LALT(X) LALT(C) LALT(V) LALT(B)            LALT(N) No No No No __
-                              No No No                        No No No
+        __ WM(Q,LAlt) WM(W,LAlt) WM(E,LAlt) WM(R,LAlt) WM(T,LAlt)             WM(Y,LAlt) No No No No __
+        __ WM(A,LAlt) WM(S,LAlt) WM(D,LAlt) WM(F,LAlt) WM(G,LAlt)             WM(H,LAlt) No No No No __
+        __ WM(Z,LAlt) WM(X,LAlt) WM(C,LAlt) WM(V,LAlt) WM(B,LAlt)             WM(N,LAlt) No No No No __
+                              No No No                                        No No No
 """
 
 [[layer]]
 #layer-7
 name = "Edit-Win"
 keys = """
-        __ LCTRL(Q) LCTRL(W) LCTRL(E) LCTRL(R) LCTRL(T)       LCTRL(Y) No No No No __
-        __ LCTRL(A) LCTRL(S) LCTRL(D) LCTRL(F) LCTRL(G)       LCTRL(H) No No No No __
-        __ LCTRL(Z) LCTRL(X) LCTRL(C) LCTRL(V) LCTRL(B)       LCTRL(N) No No No No __
-                              No No No                        No No No
+        __ WM(Q,LCtrl) WM(W,LCtrl) WM(E,LCtrl) WM(R,LCtrl) WM(T,LCtrl)        WM(Y,LCtrl) No No No No __
+        __ WM(A,LCtrl) WM(S,LCtrl) WM(D,LCtrl) WM(F,LCtrl) WM(G,LCtrl)        WM(H,LCtrl) No No No No __
+        __ WM(Z,LCtrl) WM(X,LCtrl) WM(C,LCtrl) WM(V,LCtrl) WM(B,LCtrl)        WM(N,LCtrl) No No No No __
+                              No No No                                        No No No
 """
 
 [storage]
