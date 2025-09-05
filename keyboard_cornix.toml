@@ -43,14 +43,14 @@ keys = """
 #layer-1
 name = "Qwer-Win"
 keys = """
-        __ __ __ __ __ __                                             __ __ __ __ __ __
-        __ MT(A,LCtrl) MT(S,LAlt) MT(D,LCtrl) MT(F,LShift) __       __ MT(J,RShift) MT(K,RCtrl) MT(L,RAlt) MT(Semicolon,RCtrl) __
-        LGui __ __ __ __ __                                          __ __ __ __ __ __
-                               __ __ __                                __ __ __
+        Tab Q W E R T                                                                            Y U I O P CapsLock
+        LCtrl A HMR(S,LAlt) HMR(D,LShift) F G                 H J HMR(K,RShift) HMR(L,RAlt) SHIFTED(Semicolon) RCtrl
+        LGui Z X C V B                                                             N M Comma Dot SHIFTED(Slash) RGui
+             LT(2,Escape) LT(7,Space) LT(3,Backslash)         SHIFTED(Quote) LT(4,Enter) LT(5,Backspace)
 """
 [[layer]]
-#layer 2 - Lower/Symbols
-name = "symbol_layer"
+#layer-2
+name = "Fun"
 keys = """
         __ WM(Kc1,LShift) WM(Kc2,LShift) WM(Kc3,LShift) WM(Kc4,LShift) WM(Kc5,LShift)   WM(Kc6,LShift) WM(Kc7,LShift) WM(Kc8,LShift) WM(Kc9,LShift) WM(Kc0,LShift) WM(Backslash,LShift)
         __ __ LeftBracket RightBracket WM(LeftBracket,LShift) WM(RightBracket,LShift)    Equal WM(Minus,LShift) Minus WM(Equal,LShift) WM(Quote,LShift) __
@@ -124,7 +124,7 @@ default_tx_power = 8
 
 [behavior]
 
-tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = true, prior_idle_time = "60ms", hold_on_other_press = true, hold_timeout = "200ms" }
+tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = true, prior_idle_time = "100ms", hold_on_other_press = true, hold_timeout = "220ms" }
 
 [split]
 
@@ -166,5 +166,5 @@ output_pins = ["P0_31", "P0_29", "P0_02", "P1_15", "P1_13", "P1_11"]
 mouse_key_interval = 20
 # Mouse wheel interval (ms) - controls scrolling speed
 mouse_wheel_interval = 80
-debounce_time = 10
+debounce_time = 3
 ble_profiles_num = 3
