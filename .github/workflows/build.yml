@@ -2,12 +2,19 @@ name: Build RMK firmware
 on:
   workflow_dispatch:
   push:
-    paths:
-      - "**"
-
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
-  build:
+  # build:
+  #   uses: haobogu/rmk/.github/workflows/user_build.yml@main
+  #   with:
+  #     keyboard_toml_path: "keyboard.toml"
+  #     vial_json_path: "vial.json"
+  build_cornix:
     uses: haobogu/rmk/.github/workflows/user_build.yml@main
     with:
-      keyboard_toml_path: "keyboard.toml"
-      vial_json_path: "vial.json"
+      keyboard_toml_path: "keyboard_cornix.toml"
+      vial_json_path: "vial_cornix.json"
