@@ -53,8 +53,8 @@ keys = """
 name = "Fun"
 keys = """
         No @Bt1 @Bt2 @Bt3 No No                               F10 F7 F8 F9 No No
-        __ No LAlt LShift No No                                     F11 F4 F5 F6 No No
-        __ @BtClear @BtClear No OutputBluetooth OutputUsb     F12 F1 F2 F3 TO(0) TO(1)
+        __ No LAlt LShift No No                               F11 F4 F5 F6 No No
+        __ @BtClear @BtClear No No @BtUsb                     F12 F1 F2 F3 TO(0) TO(1)
                               No No No                        No No Delete
 """
 
