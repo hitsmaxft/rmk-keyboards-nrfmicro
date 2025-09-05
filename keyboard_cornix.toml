@@ -71,9 +71,9 @@ keys = """
 #layer-4
 name = "Num"
 keys = """
-        @Bt1 @BtPre __ __ __ __                                           __ __ __ __ __ __
-        @Bt2 @BtNext __ __ __ __                                           TG(1) TO(0) __ __ __ TG(1)
-        @Bt3 @BtClear @BtUsb @BtClear __ __                                           __ __ __ __ __ CapsLock
+        __ No 7 8 9 0                                         
+        __ Slash 4 5 6 Minus                                           TG(1) TO(0) __ __ __ TG(1)
+        __ Quote 1 2 3 Equal                                           __ __ __ __ __ CapsLock
                                __ __ __                               __ __ Kc4
 """
 [[layer]]
