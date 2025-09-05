@@ -52,7 +52,7 @@ keys = """
 #layer-2
 name = "Fun"
 keys = """
-        __ WM(Kc1,LShift) WM(Kc2,LShift) WM(Kc3,LShift) WM(Kc4,LShift) WM(Kc5,LShift)   WM(Kc6,LShift) WM(Kc7,LShift) WM(Kc8,LShift) WM(Kc9,LShift) WM(Kc0,LShift) WM(Backslash,LShift)
+        __ BT1 BT2 BT3 __ __                                  WM(Kc6,LShift) WM(Kc7,LShift) WM(Kc8,LShift) WM(Kc9,LShift) WM(Kc0,LShift) WM(Backslash,LShift)
         __ __ LeftBracket RightBracket WM(LeftBracket,LShift) WM(RightBracket,LShift)    Equal WM(Minus,LShift) Minus WM(Equal,LShift) WM(Quote,LShift) __
         __ __ RightBracket WM(Kc9,LShift) WM(Backslash,LShift) Backslash                Slash WM(Slash,LShift) Grave WM(Grave,LShift) Quote __
                                __ __ __                                                  WM(Grave,LShift) MO(4) Grave
