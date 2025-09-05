@@ -1,5 +1,5 @@
 {
-  "name": "HID Keyboard",
+  "name": "Cornix Keyboard",
   "vendorId": "0xE118",
   "productId": "0x0001",
   "lighting": "none",
@@ -314,4 +314,3 @@
     ]
   }
 }
-
