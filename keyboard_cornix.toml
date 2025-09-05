@@ -22,26 +22,26 @@ matrix_map = """
             (0,0) (0,1) (0,2) (0,3) (0,4) (0,5)            (4,5) (4,4) (4,3) (4,2) (4,1) (4,0) 
             (1,0) (1,1) (1,2) (1,3) (1,4) (1,5)            (5,5) (5,4) (5,3) (5,2) (5,1) (5,0) 
             (2,0) (2,1) (2,2) (2,3) (2,4) (2,5)            (6,5) (6,4) (6,3) (6,2) (6,1) (6,0) 
-                              (3,3) (3,4) (3,5)            (7,5) (7,4) (7,3)                
+                              (3,3) (3,4) (3,5)            (7,5) (7,4) (7,3)
 """
 rows = 8
 cols = 6
 layers = 8
 
 
+[[layer]]
+#layer-0
+name = "Qwer-Mac"
+keys = """
+        Tab Q W E R T                                                                            Y U I O P CapsLock
+        LCtrl A HMR(S,LAlt) HMR(D,LShift) F G                 H J HMR(K,RShift) HMR(L,RAlt) SHIFTED(Semicolon) RCtrl
+        LGui Z X C V B                                                             N M Comma Dot SHIFTED(Slash) RGui
+             LT(2,Escape) LT(6,Space) LT(3,Backslash)         SHIFTED(Quote) LT(4,Enter) LT(5,Backspace)
+"""
 
 [[layer]]
-#layer 0 - Base
-name = "base_layer"
-keys = """
-        Tab Q W E R T                                                Y U I O P Backslash
-        Escape MT(A,LCtrl) MT(S,LAlt) MT(D,LGui) MT(F,LShift) G    H MT(J,RShift) MT(K,RGui) MT(L,RAlt) MT(Semicolon,RCtrl) Quote
-        MO(4) MT(Z,LGui) X C V B                                    N M Comma Dot Slash Backspace
-                               LT(6,Escape) MO(2) LT(5,Space)         Enter MO(3) LT(2,Backspace)
-"""
-[[layer]]
-#layer 1 - Windows
-name = "windows_layer"
+#layer-1
+name = "Qwer-Win"
 keys = """
         __ __ __ __ __ __                                             __ __ __ __ __ __
         __ MT(A,LCtrl) MT(S,LAlt) MT(D,LCtrl) MT(F,LShift) __       __ MT(J,RShift) MT(K,RCtrl) MT(L,RAlt) MT(Semicolon,RCtrl) __
@@ -124,7 +124,7 @@ default_tx_power = 8
 
 [behavior]
 
-tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = true, prior_idle_time = "60ms", hold_on_other_press=true, hold_timeout = "200ms"}
+tap_hold = { enable_hrm = true, permissive_hold = true, chordal_hold = true, prior_idle_time = "60ms", hold_on_other_press = true, hold_timeout = "200ms" }
 
 [split]
 
