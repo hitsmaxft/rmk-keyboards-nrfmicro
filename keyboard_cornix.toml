@@ -52,20 +52,20 @@ keys = """
 #layer-2
 name = "Fun"
 keys = """
-        __ BT1 BT2 BT3 __ __                                  WM(Kc6,LShift) WM(Kc7,LShift) WM(Kc8,LShift) WM(Kc9,LShift) WM(Kc0,LShift) WM(Backslash,LShift)
-        __ __ LeftBracket RightBracket WM(LeftBracket,LShift) WM(RightBracket,LShift)    Equal WM(Minus,LShift) Minus WM(Equal,LShift) WM(Quote,LShift) __
-        __ __ RightBracket WM(Kc9,LShift) WM(Backslash,LShift) Backslash                Slash WM(Slash,LShift) Grave WM(Grave,LShift) Quote __
-                               __ __ __                                                  WM(Grave,LShift) MO(4) Grave
+        No BT1 BT2 BT3 No No                                  F10 F7 F8 F9 No No
+        __ No No No No No                                     F11 F4 F5 F6 No No
+        __ BtClear BtClear No OutputBluetooth OutputUsb       F12 F1 F2 F3 TO(0) TO(1)
+                              No No No                        No No Delete
 """
 
 [[layer]]
-#layer 3 - Raise/Mix
-name = "mix_layer"
+#layer-3
+name = "Nav"
 keys = """
-        __ F1 F2 F3 F4 F5                                           F6 F7 F8 F9 F10 F11
-        __ Kc5 Kc4 Kc3 Kc2 Kc1                                     Backspace Minus Equal WM(Equal,LShift) Quote F12
-        __ Kc6 Kc7 Kc8 Kc9 Kc0                                     Tab Insert Home End __ __
-                               Tab MO(4) Backspace                      __ __ Kc3
+        __ No Home Up End No                                  No No No No No No
+        __ No Left Down Right No                              No No No No No No
+        __ No PageDown No PageUp No                           No No No No No No
+                              No No No                        No No No
 """
 [[layer]]
 #layer 4 - Adjust
