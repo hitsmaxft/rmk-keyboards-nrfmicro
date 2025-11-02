@@ -69,7 +69,7 @@ jobs:
         run: cargo binstall cargo-make rmkit flip-link -y
       - name: Build uf2 firmware
         working-directory: .
-        run: cargo make -p ${{input.profile}} uf2 
+        run: cargo make -p ${{inputs.profile}} uf2 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
