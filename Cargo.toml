@@ -11,33 +11,30 @@ license = "MIT OR Apache-2.0"
 
 [dependencies]
 #rmk = { path = "../rmk/rmk", git = "https://github.com/HaoboGu/rmk", branch = "main", features = [
-rmk = { path = "../rmk/rmk", default-features = true, features = [
+rmk = { git = "https://github.com/HaoboGu/rmk.git", branch = "main", default-features = false, features = [
     "nrf52840_ble",
     "split",
     "async_matrix",
     "adafruit_bl",
-    #"usb_log",
-    "defmt",
-    "storage",
-    "col2row",
+    "controller",
 ] }
-nrf-sdc = { version = "0.1.1", default-features = false, features = [
+nrf-sdc = { git = "https://github.com/alexmoon/nrf-sdc", rev = "11d5c3c", default-features = false, features = [
     "defmt",
     "peripheral",
     "central",
     "nrf52840",
 ] }
-nrf-mpsl = { version = "0.1.1", default-features = false, features = [
+nrf-mpsl = { git = "https://github.com/alexmoon/nrf-sdc", rev = "11d5c3c", default-features = false, features = [
     "defmt",
     "critical-section-impl",
     "nrf52840",
 ] }
-bt-hci = { version = "0.3", default-features = false, features = ["defmt"] }
+bt-hci = { version = "0.6", default-features = false, features = ["defmt"] }
 
 cortex-m = "0.7.7"
 cortex-m-rt = "0.7.5"
-embassy-time = { version = "0.4", features = ["tick-hz-32_768", "defmt", "defmt-timestamp-uptime"] }
-embassy-nrf = { version = "0.5", features = [
+embassy-time = { version = "0.5", features = ["tick-hz-32_768", "defmt", "defmt-timestamp-uptime"] }
+embassy-nrf = { version = "0.8", features = [
     "defmt",
     "nrf52840",
     "time-driver-rtc1",
@@ -46,7 +43,7 @@ embassy-nrf = { version = "0.5", features = [
     "nfc-pins-as-gpio",
     "time",
 ] }
-embassy-executor = { version = "0.7", features = [
+embassy-executor = { version = "0.9", features = [
     "defmt",
     "arch-cortex-m",
     "executor-thread",
@@ -60,11 +57,6 @@ rand = { version = "0.8.4", default-features = false }
 rand_core = { version = "0.6" }
 rand_chacha = { version = "0.3", default-features = false }
 
-[patch.crates-io]
-embassy-futures = { git = "https://github.com/embassy-rs/embassy.git", rev = "03a16011f63c11c97ded10f7e6b872db81280a23" }
-embassy-executor = { git = "https://github.com/embassy-rs/embassy.git", rev = "03a16011f63c11c97ded10f7e6b872db81280a23" }
-nrf-sdc = { git = "https://github.com/alexmoon/nrf-sdc", rev = "b15c91008f085c8c1f21fdbfc176a60dee4ab9fa" }
-nrf-mpsl = { git = "https://github.com/alexmoon/nrf-sdc", rev = "b15c91008f085c8c1f21fdbfc176a60dee4ab9fa" }
 
 [build-dependencies]
 xz2 = "0.1.7"
