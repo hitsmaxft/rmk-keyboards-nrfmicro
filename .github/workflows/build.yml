@@ -67,12 +67,6 @@ jobs:
           sudo dpkg -i $LIBSSL
       - name: Install rmkit, flip-link and cargo-make
         run: cargo binstall cargo-make rmkit flip-link -y
-      - name: Create firmware project
-        working-directory: .
-        run: rmkit create --keyboard-toml-path ${{ inputs.keyboard_toml_path }} --vial-json-path ${{ inputs.vial_json_path }} --target-dir rmk
-      - name: Build firmware
-        working-directory: .
-        run: cargo make
       - name: Build uf2 firmware
         working-directory: .
         run: cargo make -p ${{input.profile}} uf2 
