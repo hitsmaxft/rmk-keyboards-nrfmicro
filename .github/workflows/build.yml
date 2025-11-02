@@ -1,12 +1,13 @@
 name: Build firmware according to user config file
 on:
   workflow_call:
+  workflow_dispatch:
     inputs:
       profile:
         description: "profile for make"
         default: "corne"
         required: true
-        type: string      
+        type: string
       keyboard_toml_path:
         description: "Path to the keyboard.toml"
         default: "keyboard.toml"
@@ -22,8 +23,12 @@ env:
 jobs:
   get_chip_name:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        profile: [corne, cornix, keyball61, velvet]
     outputs:
       chip_name: ${{ steps.capture.outputs.chip_name }}
+      profile: ${{ matrix.profile }}
     steps:
       - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v4
@@ -42,7 +47,7 @@ jobs:
         id: capture
         run: |
           # Run rmkit command to get the chip name
-          OUTPUT=$(rmkit get-chip --keyboard-toml-path ${{ inputs.keyboard_toml_path }})
+          OUTPUT=$(rmkit get-chip)
 
           # Print the output to confirm
           echo "Command output: $OUTPUT"
@@ -53,6 +58,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: get_chip_name
     if: needs.get_chip_name.outputs.chip_name != 'esp32s3'
+    strategy:
+      matrix:
+        profile: [corne, cornix, keyball61, velvet]
+      fail-fast: false
     steps:
       - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v4
@@ -69,21 +78,25 @@ jobs:
         run: cargo binstall cargo-make rmkit flip-link -y
       - name: Build uf2 firmware
         working-directory: .
-        run: cargo make -p ${{inputs.profile}} uf2 
+        run: cargo make -p ${{ matrix.profile }} uf2
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: firmware_uf2
+          name: firmware_${{ matrix.profile }}_uf2
           path: ./*.uf2
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: firmware_hex
+          name: firmware_${{ matrix.profile }}_hex
           path: ./*.hex
   build_esp:
     runs-on: ubuntu-latest
     needs: get_chip_name
     if: needs.get_chip_name.outputs.chip_name == 'esp32s3'
+    strategy:
+      matrix:
+        profile: [corne, cornix, keyball61, velvet]
+      fail-fast: false
     steps:
       - uses: cargo-bins/cargo-binstall@main
       - uses: actions/checkout@v4
