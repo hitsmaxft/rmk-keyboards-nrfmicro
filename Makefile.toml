@@ -106,7 +106,8 @@ cargo build --release
 """
 
 [tasks.build]
-args = ["build", "--verbose"]
+#args = ["build", "--verbose"]
+args = ["build"]
 
 [tasks.uf2]
 dependencies = ["uf2-central", "uf2-peripheral"]
