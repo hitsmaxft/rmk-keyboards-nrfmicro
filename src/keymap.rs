@@ -1,6 +1,38 @@
 use rmk::types::action::{EncoderAction, KeyAction, MorseProfile, MorseMode};
-use rmk::{a, k, mo, mt, wm, tg, to, mtp, ltp};
-use rmk::types::modifier::ModifierCombination;
+use rmk::{a, k, mo, tg, to, ltp};
+
+
+#[macro_export]
+macro_rules! wm {
+    ($x: ident, $m: expr) => {
+        rmk::types::action::KeyAction::Single(rmk::types::action::Action::KeyWithModifier(
+            rmk::types::keycode::KeyCode::$x,
+            paste::paste! {rmk::types::modifier::ModifierCombination::[<$m:upper>]},
+        ))
+    };
+}
+#[macro_export]
+macro_rules! mt {
+    ($k: ident, $m: expr) => {
+        rmk::types::action::KeyAction::TapHold(
+            rmk::types::action::Action::Key(rmk::types::keycode::KeyCode::$k),
+            paste::paste! {rmk::types::action::Action::Modifier(rmk::types::modifier::ModifierCombination::[<$m:upper>])},
+            rmk::types::action::MorseProfile::const_default(),
+        )
+    };
+}
+#[macro_export]
+macro_rules! mtp {
+    ($k: ident, $m: ident, $p: expr) => {
+        paste::paste! {
+            rmk::types::action::KeyAction::TapHold(
+                rmk::types::action::Action::Key(rmk::types::keycode::KeyCode::$k),
+                rmk::types::action::Action::Modifier(rmk::types::modifier::ModifierCombination::[<$m:upper>]),
+                $p,
+            )
+        }
+    };
+}
 
 const HRM: MorseProfile = MorseProfile::new(
     Some(true), // unilateral_tap
@@ -25,35 +57,35 @@ pub const fn get_default_keymap() -> [[[KeyAction; COL]; ROW]; NUM_LAYER] {
         // Base layer
         [
             [k!(Tab), k!(Q), k!(W), k!(E), k!(R), k!(T)],
-            [k!(Escape), mtp!(A, ModifierCombination::LCTRL, HRM), mtp!(S, ModifierCombination::LALT, HRM), mtp!(D, ModifierCombination::LGUI, HRM), mtp!(F, ModifierCombination::LSHIFT, HRM), k!(G)],
-            [mo!(4), mt!(Z, ModifierCombination::LGUI), k!(X), k!(C), k!(V), k!(B)],
+            [k!(Escape), mtp!(A, LCtrl, HRM), mtp!(S, LAlt, HRM), mtp!(D, LGui, HRM), mtp!(F, LShift, HRM), k!(G)],
+            [mo!(4), mt!(Z, LGui), k!(X), k!(C), k!(V), k!(B)],
             [k!(No), k!(No), k!(No), ltp!(6, Escape, THUMB_TAP), mo!(2), k!(Space)],
             [k!(Backspace), k!(Y), k!(U), k!(I), k!(O), k!(P)],
-            [k!(Enter), k!(H), mtp!(J, ModifierCombination::RSHIFT, HRM), mtp!(K, ModifierCombination::RGUI, HRM), mtp!(L, ModifierCombination::RALT, HRM), mtp!(Semicolon, ModifierCombination::RCTRL, HRM)],
+            [k!(Enter), k!(H), mtp!(J, RShift, HRM), mtp!(K, RGui, HRM), mtp!(L, RAlt, HRM), mtp!(Semicolon, RCtrl, HRM)],
             [k!(Slash), k!(M), k!(Comma), k!(Dot), k!(N), a!(No)],
             [k!(No), k!(No), k!(No), ltp!(5, Enter, THUMB_TAP), mo!(3), ltp!(2, Backspace, THUMB_TAP)]
         ],
         // Windows layer
         [
             [a!(No), a!(No), a!(No), a!(No), a!(No), a!(No)],
-            [a!(No), mtp!(A, ModifierCombination::LCTRL, HRM), mtp!(S, ModifierCombination::LALT, HRM), mt!(D, ModifierCombination::LCTRL), mtp!(F, ModifierCombination::LSHIFT, HRM), a!(No)],
+            [a!(No), mtp!(A, LCtrl, HRM), mtp!(S, LAlt, HRM), mt!(D, LCtrl), mtp!(F, LShift, HRM), a!(No)],
             [k!(LGui), a!(No), a!(No), a!(No), a!(No), a!(No)],
             [a!(No), a!(No), a!(No), a!(No), a!(No), a!(No)],
             [a!(No), a!(No), a!(No), a!(No), a!(No), a!(No)],
-            [a!(No), a!(No), mtp!(J, ModifierCombination::RSHIFT, HRM), mt!(K, ModifierCombination::RCTRL), mtp!(L, ModifierCombination::RALT, HRM), mtp!(Semicolon, ModifierCombination::RCTRL, HRM)],
+            [a!(No), a!(No), mtp!(J, RShift, HRM), mt!(K, RCtrl), mtp!(L, RAlt, HRM), mtp!(Semicolon, RCtrl, HRM)],
             [a!(No), a!(No), a!(No), a!(No), a!(No), a!(No)],
             [a!(No), a!(No), a!(No), a!(No), a!(No), a!(No)]
         ],
         // Symbol layer
         [
             [a!(No), a!(No), a!(No), a!(No), a!(No), a!(No)],
-            [a!(No), a!(No), k!(LeftBracket), k!(RightBracket), wm!(LeftBracket, ModifierCombination::LSHIFT), wm!(RightBracket, ModifierCombination::LSHIFT)],
-            [a!(No), a!(No), k!(RightBracket), wm!(Kc9, ModifierCombination::LSHIFT), wm!(Backslash, ModifierCombination::LSHIFT), k!(Backslash)],
+            [a!(No), a!(No), k!(LeftBracket), k!(RightBracket), wm!(LeftBracket, LShift), wm!(RightBracket, LShift)],
+            [a!(No), a!(No), k!(RightBracket), wm!(Kc9, LShift), wm!(Backslash, LShift), k!(Backslash)],
             [a!(No), a!(No), a!(No), a!(No), a!(No), a!(No)],
-            [a!(No), wm!(Kc6, ModifierCombination::LSHIFT), wm!(Kc7, ModifierCombination::LSHIFT), wm!(Kc8, ModifierCombination::LSHIFT), wm!(Kc9, ModifierCombination::LSHIFT), wm!(Kc0, ModifierCombination::LSHIFT)],
-            [a!(No), k!(Equal), wm!(Minus, ModifierCombination::LSHIFT), k!(Minus), wm!(Equal, ModifierCombination::LSHIFT), wm!(Quote, ModifierCombination::LSHIFT)],
-            [a!(No), k!(Slash), wm!(Slash, ModifierCombination::LSHIFT), k!(Grave), wm!(Grave, ModifierCombination::LSHIFT), k!(Quote)],
-            [a!(No), a!(No), a!(No), wm!(Grave, ModifierCombination::LSHIFT), mo!(4), k!(Grave)]
+            [a!(No), wm!(Kc6, LShift), wm!(Kc7, LShift), wm!(Kc8, LShift), wm!(Kc9, LShift), wm!(Kc0, LShift)],
+            [a!(No), k!(Equal), wm!(Minus, LShift), k!(Minus), wm!(Equal, LShift), wm!(Quote, LShift)],
+            [a!(No), k!(Slash), wm!(Slash, LShift), k!(Grave), wm!(Grave, LShift), k!(Quote)],
+            [a!(No), a!(No), a!(No), wm!(Grave, LShift), mo!(4), k!(Grave)]
         ],
         // Mix layer
         [
@@ -62,7 +94,7 @@ pub const fn get_default_keymap() -> [[[KeyAction; COL]; ROW]; NUM_LAYER] {
             [k!(LGui), k!(Kc6), k!(Kc7), k!(Kc8), k!(Kc9), k!(Kc0)],
             [k!(Tab), mo!(4), k!(Backspace), a!(No), a!(No), a!(No)],
             [a!(No), k!(F6), k!(F7), k!(F8), k!(F9), k!(F10)],
-            [a!(No), k!(Backspace), k!(Minus), k!(Equal), wm!(Equal, ModifierCombination::LSHIFT), k!(Quote)],
+            [a!(No), k!(Backspace), k!(Minus), k!(Equal), wm!(Equal, LShift), k!(Quote)],
             [a!(No), a!(No), k!(Insert), k!(Home), k!(End), a!(No)],
             [a!(No), a!(No), a!(No), a!(No), k!(Kc3), a!(No)]
         ],
