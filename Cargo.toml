@@ -12,7 +12,8 @@ license = "MIT OR Apache-2.0"
 
 
 [dependencies]
-rmk = { path = "/Users/bhe/projects/keyboard/rmk/rmk", features = [
+#rmk = { path = "/Users/bhe/projects/keyboard/rmk/rmk", features = [
+rmk = { version = "0.8", features = [
     "nrf52840_ble",
     "split",
     "async_matrix",
