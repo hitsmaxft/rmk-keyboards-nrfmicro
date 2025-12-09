@@ -37,7 +37,7 @@ keys = """
         Tab Q W E R T                                                Y U I O P Backslash
         Escape MT(A, LCtrl) MT(S, LAlt) MT(D, LGui) MT(F, LShift) G    H MT(J, RShift) MT(K, RGui) MT(L, RAlt) MT(Semicolon, RCtrl) Quote
         MO(4) MT(Z,LGui) X C V B                                    N M Comma Dot Slash Backspace
-                               LT(6, Escape) MO(2) Space         LT(5, Enter) MO(3) LT(2, Backspace)
+                               LT(6, Escape, ThumbTap) MO(2) Space         LT(5, Enter, ThumbTap) MO(3) LT(2, Backspace, ThumbTap)
 """
 [[layer]]
 #layer 1 - Windows
@@ -110,7 +110,7 @@ keys = """
 
 enabled = true
 # Set `clear_storage` to true to clear all the stored info when the keyboard boots
-clear_storage = false
+clear_storage = true
 
 [ble]
 
@@ -132,6 +132,7 @@ hold_timeout = "240ms"
 gap_timeout = "230ms"
 permissive_hold = true
 hold_on_other_press=true
+unilateral_tap = true
 
 [behavior.morse.profiles]
 # matrix_map may refer these to override the defaults given in [behavior.morse] for some key positions - this example is a home row mod
