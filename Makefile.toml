@@ -22,6 +22,12 @@ DEVICE_NAME="keyball-rmk"
 KEYBOARD_TOML_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/keyboard_keyball61.toml"
 VIAL_JSON_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/vial_corne.json"
 
+[env.corne-reset]
+
+DEVICE_NAME="corne-rmk-reset"
+KEYBOARD_TOML_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/keyboard_corne_reset.toml"
+VIAL_JSON_PATH="${CARGO_MAKE_WORKING_DIRECTORY}/vial_corne.json"
+
 
 [tasks.install-llvm-tools]
 install_crate = { rustup_component_name = "llvm-tools" }
@@ -137,3 +143,15 @@ script = """
 pico-dfu -y firmware/${DEVICE_NAME}-peripheral.uf2
 """
 dependencies = ["uf2-peripheral"]
+
+[tasks.flash]
+dependencies = ["uf2"]
+script = """
+pico-dfu -y firmware/${DEVICE_NAME}-central.uf2
+"""
+
+[tasks.flash-ph]
+dependencies = ["uf2"]
+script = """
+pico-dfu -y firmware/${DEVICE_NAME}-peripheral.uf2
+"""

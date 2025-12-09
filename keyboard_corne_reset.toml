@@ -1,0 +1,115 @@
+[keyboard]
+name = "Corne RMK Reset"
+product_name = "Corne42 rmk"
+vendor_id = 0x4653
+product_id = 0x0001
+manufacturer = "BHE-ergo"
+board = "nice!nano_v2"
+vial_json = "vial_corne.json"
+
+[aliases]
+Bt1 = "User0"
+Bt2 = "User1"
+Bt3 = "User2"
+BtNext = "User3"
+BtPre = "User4"
+BtClear = "User5"
+BtUsb = "User6"
+
+[layout]
+
+matrix_map = """
+            (0,0) (0,1) (0,2) (0,3) (0,4) (0,5)                        (4,5) (4,4) (4,3) (4,2) (4,1) (4,0)
+            (1,0) (1,1) (1,2) (1,3) (1,4) (1,5)                        (5,5) (5,4) (5,3) (5,2) (5,1) (5,0)
+            (2,0) (2,1) (2,2) (2,3) (2,4) (2,5)                        (6,5) (6,4) (6,3) (6,2) (6,1) (6,0)
+                              (3,3) (3,4) (3,5)                        (7,5) (7,4) (7,3)
+"""
+rows = 8
+cols = 6
+layers = 1
+
+[[layer]]
+# Reset layer - Base
+name = "reset_layer"
+keys = """
+        Tab Q W E R T                                                Y U I O P Backslash
+        Escape A S D F G                                            H J K L Semicolon Quote
+        LShift Z X C V B                                            N M Comma Dot Slash Backspace
+                               Escape Space Space                    Enter Enter Backspace
+"""
+
+[storage]
+
+enabled = true
+# Set `clear_storage` to true to clear all the stored info when the keyboard boots
+clear_storage = true
+
+[ble]
+
+enabled = true
+
+#battery config for nicenano
+battery_adc_pin = "vddh"
+adc_divider_measured = 2000
+adc_divider_total = 2806
+default_tx_power = 8
+
+[behavior]
+
+[behavior.morse]
+enable_flow_tap = true
+prior_idle_time = "30ms"
+hold_timeout = "240ms"
+gap_timeout = "230ms"
+permissive_hold = true
+hold_on_other_press=true
+unilateral_tap = true
+
+[behavior.morse.profiles]
+# matrix_map may refer these to override the defaults given in [behavior.morse] for some key positions - this example is a home row mod
+HRM = { permissive_hold = true, unilateral_tap = true, hold_timeout = "250ms"}
+ThumbTap = { permissive_hold = true, unilateral_tap = false, hold_timeout = "250ms", hold_on_other_press=true}
+
+
+[split]
+
+connection = "ble"
+
+[split.central]
+
+rows = 4
+cols = 6
+row_offset = 0
+col_offset = 0
+ble_addr = [0x18, 0xe2, 0x21, 0x80, 0xc0, 0xc7]
+
+[split.central.matrix]
+
+## promicro pin: 4 5 6 7
+row_pins = ["P0_22", "P0_24", "P1_00", "P0_11"]
+## promicro pin: 21 20 19 18 15 14
+col_pins = ["P0_31", "P0_29", "P0_02", "P1_15", "P1_13", "P1_11"]
+
+[[split.peripheral]]
+
+rows = 4
+cols = 6
+row_offset = 4
+col_offset = 0
+ble_addr = [0x7e, 0xfe, 0x73, 0x9e, 0x66, 0xe3]
+
+[split.peripheral.matrix]
+
+## promicro pin: 4 5 6 7
+row_pins = ["P0_22", "P0_24", "P1_00", "P0_11"]
+## promicro pin: 21 20 19 18 15 14
+col_pins = ["P0_31", "P0_29", "P0_02", "P1_15", "P1_13", "P1_11"]
+
+
+[rmk]
+# Mouse key interval (ms) - controls mouse movement speed
+mouse_key_interval = 20
+# Mouse wheel interval (ms) - controls scrolling speed
+mouse_wheel_interval = 80
+debounce_time = 10
+ble_profiles_num = 3
