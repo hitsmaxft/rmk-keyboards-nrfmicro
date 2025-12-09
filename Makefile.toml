@@ -41,8 +41,7 @@ install_crate = { crate_name = "cargo-binutils", binary = "cargo", test_arg = [
     "--help",
 ] }
 script = """
-
-cargo objcopy --release --bin central -- \
+cargo objcopy --release --bin central_config -- \
     -O ihex target/${DEVICE_NAME}-central.hex
 """
 dependencies = ["install-llvm-tools", "flip-link"]
@@ -58,7 +57,7 @@ args = [
     "objcopy",
     "--release",
     "--bin",
-    "peripheral",
+    "peripheral_config",
     "--",
     "-O",
     "ihex",
@@ -128,7 +127,7 @@ script = [
 
 [tasks.expand-main]
 script = """
-cargo expand --release --bin central
+cargo expand --release --bin central_config
 """
 
 [tasks.flash-main]

@@ -63,14 +63,20 @@ xz2 = "0.1.7"
 json = "0.12"
 const-gen = "1.6"
 
-# Split keyboard example
+
 [[bin]]
 name = "central"
 path = "src/central.rs"
-
 [[bin]]
 name = "peripheral"
 path = "src/peripheral.rs"
+
+[[bin]]
+name = "central_config"
+path = "src/central_config.rs"
+[[bin]]
+name = "peripheral_config"
+path = "src/peripheral_config.rs"
 
 [profile.dev]
 codegen-units = 1      # better optimizations
