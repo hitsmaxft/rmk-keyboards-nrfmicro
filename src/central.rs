@@ -5,6 +5,7 @@ mod vial;
 #[macro_use]
 mod macros;
 mod keymap;
+mod key_position;
 
 use defmt::{info, unwrap};
 use embassy_executor::Spawner;
@@ -94,7 +95,8 @@ fn build_sdc<'d, const N: usize>(
 fn init_adc(adc_pin: AnyInput, adc: Peri<'static, SAADC>) -> Saadc<'static, 1> {
     // Then we initialize the ADC. We are only using one channel in this example.
     let config = saadc::Config::default();
-    let channel_cfg = saadc::ChannelConfig::single_ended(adc_pin.degrade_saadc());
+    // vddh use saadc::ChannelConfig::single_ended(saadc::VddhDiv5Input.degrade_saadc())
+    let channel_cfg = saadc::ChannelConfig::single_ended(saadc::VddhDiv5Input.degrade_saadc());
     interrupt::SAADC.set_priority(interrupt::Priority::P3);
 
     saadc::Saadc::new(adc, Irqs, config, [channel_cfg])
@@ -110,7 +112,7 @@ fn ble_addr() -> [u8; 6] {
 
 #[embassy_executor::main]
 async fn main(spawner: Spawner) {
-    info!("Hello RMK BLE!");
+    info!("Hello RMK BLE in RUST!");
     // Initialize the peripherals and nrf-sdc controller
     let mut nrf_config = embassy_nrf::config::Config::default();
     nrf_config.dcdc.reg0_voltage = Some(embassy_nrf::config::Reg0Voltage::_3V3);
@@ -196,7 +198,8 @@ async fn main(spawner: Spawner) {
         Some(240u16), // hold_timeout
         Some(230u16), // gap_timeout
     );
-    let mut key_config = PositionalConfig::default();
+    // Create positional config based on real hand positions from matrix_map
+    let mut key_config = key_position::create_corne_positional_config();
     let mut encoder_map = keymap::get_default_encoder_map();
     let (keymap, mut storage) = initialize_encoder_keymap_and_storage(
         &mut default_keymap,
@@ -211,7 +214,6 @@ async fn main(spawner: Spawner) {
     // Initialize the matrix and keyboard
     let debouncer = DefaultDebouncer::new();
     let mut matrix = CentralMatrix::<_, _, _, 0, 0, 4, 6, true>::new(row_pins, col_pins, debouncer);
-    // let mut matrix = TestMatrix::<ROW, COL>::new();
     let mut keyboard = Keyboard::new(&keymap);
 
     // Read peripheral address from storage
@@ -223,7 +225,7 @@ async fn main(spawner: Spawner) {
     // Initialize the controllers
     let mut capslock_led = KeyboardIndicatorController::new(
         Output::new(
-            p.P0_00,
+            p.P0_15,
             embassy_nrf::gpio::Level::Low,
             embassy_nrf::gpio::OutputDrive::Standard,
         ),

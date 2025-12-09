@@ -3,6 +3,7 @@
 
 #[macro_use]
 mod macros;
+mod key_position;
 
 use defmt::{info, unwrap};
 use embassy_executor::Spawner;
@@ -76,7 +77,7 @@ fn build_sdc<'d, const N: usize>(
 fn init_adc(adc_pin: AnyInput, adc: Peri<'static, SAADC>) -> Saadc<'static, 1> {
     // Then we initialize the ADC. We are only using one channel in this example.
     let config = saadc::Config::default();
-    let channel_cfg = saadc::ChannelConfig::single_ended(adc_pin.degrade_saadc());
+    let channel_cfg = saadc::ChannelConfig::single_ended(saadc::VddhDiv5Input.degrade_saadc());
     interrupt::SAADC.set_priority(interrupt::Priority::P3);
 
     saadc::Saadc::new(adc, Irqs, config, [channel_cfg])
@@ -144,6 +145,9 @@ async fn main(spawner: Spawner) {
         num_sectors: 32,     // 128K
         ..Default::default()
     };
+
+    // Create positional config - available for future use in peripheral if needed
+    let _key_config = key_position::create_corne_positional_config();
     let flash = Flash::take(mpsl, p.NVMC);
     let mut storage = new_storage_for_split_peripheral(flash, storage_config).await;
 
@@ -151,9 +155,6 @@ async fn main(spawner: Spawner) {
     let debouncer = DefaultDebouncer::new();
     let mut matrix = Matrix::<_, _, _, 4, 6, true>::new(row_pins, col_pins, debouncer);
     // let mut matrix = rmk::matrix::TestMatrix::<4, 7>::new();
-
-
-
     // Start
     join(
         run_devices! (
