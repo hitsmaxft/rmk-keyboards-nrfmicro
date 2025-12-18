@@ -1,56 +1,30 @@
-use rmk::types::action::{EncoderAction, KeyAction, MorseProfile, MorseMode};
-use rmk::{a, k, mo, tg, to, ltp};
+use core::option::Option::Some;
+use rmk::types::action::{EncoderAction, KeyAction, MorseMode, MorseProfile};
+use rmk::{a, k, ltp, mo, tg, to};
 
+use crate::{mt, mtp, wm};
 
-#[macro_export]
-macro_rules! wm {
-    ($x: ident, $m: expr) => {
-        rmk::types::action::KeyAction::Single(rmk::types::action::Action::KeyWithModifier(
-            rmk::types::keycode::KeyCode::$x,
-            paste::paste! {rmk::types::modifier::ModifierCombination::[<$m:upper>]},
-        ))
-    };
-}
-#[macro_export]
-macro_rules! mt {
-    ($k: ident, $m: expr) => {
-        rmk::types::action::KeyAction::TapHold(
-            rmk::types::action::Action::Key(rmk::types::keycode::KeyCode::$k),
-            paste::paste! {rmk::types::action::Action::Modifier(rmk::types::modifier::ModifierCombination::[<$m:upper>])},
-            rmk::types::action::MorseProfile::const_default(),
-        )
-    };
-}
-#[macro_export]
-macro_rules! mtp {
-    ($k: ident, $m: ident, $p: expr) => {
-        paste::paste! {
-            rmk::types::action::KeyAction::TapHold(
-                rmk::types::action::Action::Key(rmk::types::keycode::KeyCode::$k),
-                rmk::types::action::Action::Modifier(rmk::types::modifier::ModifierCombination::[<$m:upper>]),
-                $p,
-            )
-        }
-    };
-}
-
-const HRM: MorseProfile = MorseProfile::new(
+pub(crate) const HRM: MorseProfile = MorseProfile::new(
     Some(true), // unilateral_tap
     Some(MorseMode::PermissiveHold),
     Some(250u16), // hold_timeout
     Some(250u16), // gap_timeout
 );
 
-const THUMB_TAP: MorseProfile = MorseProfile::new(
+pub(crate) const THUMB_TAP: MorseProfile = MorseProfile::new(
     Some(false), // unilateral_tap
     Some(MorseMode::HoldOnOtherPress),
     Some(250u16), // hold_timeout
     Some(250u16), // gap_timeout
 );
+
+// Re-export the parse_matrix_map function from matrix_map module
 pub(crate) const COL: usize = 6;
 pub(crate) const ROW: usize = 8;
+pub(crate) const KEYS: usize = 42;
 pub(crate) const NUM_LAYER: usize = 8;
 pub(crate) const NUM_ENCODER: usize = 0;
+
 #[rustfmt::skip]
 pub const fn get_default_keymap() -> [[[KeyAction; COL]; ROW]; NUM_LAYER] {
     [
@@ -146,7 +120,5 @@ pub const fn get_default_keymap() -> [[[KeyAction; COL]; ROW]; NUM_LAYER] {
 }
 
 pub const fn get_default_encoder_map() -> [[EncoderAction; NUM_ENCODER]; NUM_LAYER] {
-    [
-        []; NUM_LAYER
-    ]
+    [[]; NUM_LAYER]
 }

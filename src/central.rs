@@ -4,8 +4,13 @@
 mod vial;
 #[macro_use]
 mod macros;
+#[macro_use]
+mod matrix_map;
 mod keymap;
 mod key_position;
+
+mod keymap42;
+
 
 use defmt::{info, unwrap};
 use embassy_executor::Spawner;
@@ -25,7 +30,7 @@ use rand_core::SeedableRng;
 use rmk::ble::build_ble_stack;
 use rmk::channel::EVENT_CHANNEL;
 use rmk::config::{
-    BehaviorConfig, BleBatteryConfig, DeviceConfig, PositionalConfig, RmkConfig, StorageConfig,
+    BehaviorConfig, BleBatteryConfig, DeviceConfig, RmkConfig, StorageConfig,
     VialConfig,
 };
 use rmk::controller::EventController as _;
@@ -42,6 +47,8 @@ use rmk::{
 };
 use static_cell::StaticCell;
 use vial::{VIAL_KEYBOARD_DEF, VIAL_KEYBOARD_ID};
+use crate::matrix_map::parse_matrix_map;
+use crate::keymap42::get_physical_keymap;
 use {defmt_rtt as _, panic_probe as _};
 
 bind_interrupts!(struct Irqs {
@@ -92,7 +99,7 @@ fn build_sdc<'d, const N: usize>(
 }
 
 /// Initializes the SAADC peripheral in single-ended mode on the given pin.
-fn init_adc(adc_pin: AnyInput, adc: Peri<'static, SAADC>) -> Saadc<'static, 1> {
+fn init_adc(adc: Peri<'static, SAADC>) -> Saadc<'static, 1> {
     // Then we initialize the ADC. We are only using one channel in this example.
     let config = saadc::Config::default();
     // vddh use saadc::ChannelConfig::single_ended(saadc::VddhDiv5Input.degrade_saadc())
@@ -159,9 +166,8 @@ async fn main(spawner: Spawner) {
 
     // Initialize the ADC.
     // We are only using one channel for detecting battery level
-    let adc_pin = p.P0_05.degrade_saadc();
     let is_charging_pin = Input::new(p.P0_07, embassy_nrf::gpio::Pull::Up);
-    let saadc = init_adc(adc_pin, p.SAADC);
+    let saadc = init_adc(p.SAADC);
     // Wait for ADC calibration.
     saadc.calibrate().await;
 
@@ -188,7 +194,9 @@ async fn main(spawner: Spawner) {
     };
 
     // Initialize the storage and keymap
-    let mut default_keymap = keymap::get_default_keymap();
+    // Create physical keymap and transform it to pin-based keymap
+    let physical_keymap = get_physical_keymap();
+    let mut default_keymap = parse_matrix_map(&keymap::MATRIX_MAP, &physical_keymap);
     let mut behavior_config = BehaviorConfig::default();
     behavior_config.morse.enable_flow_tap = true;
     behavior_config.morse.prior_idle_time = embassy_time::Duration::from_millis(30);

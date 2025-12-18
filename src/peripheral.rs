@@ -3,6 +3,8 @@
 
 #[macro_use]
 mod macros;
+#[macro_use]
+mod matrix_map;
 mod key_position;
 
 use defmt::{info, unwrap};
@@ -74,7 +76,7 @@ fn build_sdc<'d, const N: usize>(
 }
 
 /// Initializes the SAADC peripheral in single-ended mode on the given pin.
-fn init_adc(adc_pin: AnyInput, adc: Peri<'static, SAADC>) -> Saadc<'static, 1> {
+fn init_adc(adc: Peri<'static, SAADC>) -> Saadc<'static, 1> {
     // Then we initialize the ADC. We are only using one channel in this example.
     let config = saadc::Config::default();
     let channel_cfg = saadc::ChannelConfig::single_ended(saadc::VddhDiv5Input.degrade_saadc());
@@ -131,8 +133,7 @@ async fn main(spawner: Spawner) {
     let stack = build_ble_stack(sdc, ble_addr(), &mut rng_generator, &mut resources).await;
 
     // Initialize the ADC. We are only using one channel for detecting battery level
-    let adc_pin = p.P0_05.degrade_saadc();
-    let saadc = init_adc(adc_pin, p.SAADC);
+    let saadc = init_adc(p.SAADC);
     // Wait for ADC calibration.
     saadc.calibrate().await;
 

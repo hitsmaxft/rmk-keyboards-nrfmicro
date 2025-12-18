@@ -1,4 +1,4 @@
-[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+[target.'cfg(target_arch = "arm")']
 runner = "probe-rs run --chip nRF52840_xxAA"
 linker = "flip-link"
 

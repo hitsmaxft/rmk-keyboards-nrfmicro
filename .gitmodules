@@ -1,0 +1,3 @@
+[submodule "deps/rmk"]
+	path = deps/rmk
+	url = https://github.com/HaoboGu/rmk.git
