@@ -4,8 +4,8 @@
 mod vial;
 #[macro_use]
 mod macros;
-mod keymap;
 mod key_position;
+mod keymap;
 
 use defmt::{info, unwrap};
 use embassy_executor::Spawner;

@@ -21,21 +21,77 @@ pub fn create_corne_positional_config() -> PositionalConfig<8, 6> {
     PositionalConfig {
         hand: [
             // Row 0: Left hand keys (0,0-0,5)
-            [rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left],
+            [
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+            ],
             // Row 1: Left hand keys (1,0-1,5)
-            [rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left],
+            [
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+            ],
             // Row 2: Left hand keys (2,0-2,5)
-            [rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left],
+            [
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+            ],
             // Row 3: Only columns 3,4,5 have left hand keys (3,3-3,5), others are Unknown
-            [rmk::config::Hand::Unknown, rmk::config::Hand::Unknown, rmk::config::Hand::Unknown, rmk::config::Hand::Left, rmk::config::Hand::Left, rmk::config::Hand::Left],
+            [
+                rmk::config::Hand::Unknown,
+                rmk::config::Hand::Unknown,
+                rmk::config::Hand::Unknown,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+                rmk::config::Hand::Left,
+            ],
             // Row 4: Right hand keys (4,5-4,0) mapped to 4,0-4,5 in our matrix
-            [rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right],
+            [
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+            ],
             // Row 5: Right hand keys (5,5-5,0) mapped to 5,0-5,5 in our matrix
-            [rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right],
+            [
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+            ],
             // Row 6: Right hand keys (6,5-6,0) mapped to 6,0-6,5 in our matrix
-            [rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right],
+            [
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+            ],
             // Row 7: Only columns 3,4,5 have right hand keys (7,5-7,3) mapped to 7,3-7,5 in our matrix
-            [rmk::config::Hand::Unknown, rmk::config::Hand::Unknown, rmk::config::Hand::Unknown, rmk::config::Hand::Right, rmk::config::Hand::Right, rmk::config::Hand::Right],
+            [
+                rmk::config::Hand::Unknown,
+                rmk::config::Hand::Unknown,
+                rmk::config::Hand::Unknown,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+                rmk::config::Hand::Right,
+            ],
         ],
     }
 }

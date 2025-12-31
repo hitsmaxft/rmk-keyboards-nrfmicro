@@ -24,7 +24,5 @@ flash-right: build
     pico-dfu -y ./soflev2-rmk-peripheral.uf2 /Volumes/NICENANO
 
 corne:
-    export KEYBOARD_TOML_PATH=$(pwd)/keyboard_corne.toml
-    export VIAL_JSON_PATH=$(pwd)/vial_corne.json
-    just uf2
+    cargo make -p corne
 

@@ -1,6 +1,5 @@
-use rmk::types::action::{EncoderAction, KeyAction, MorseProfile, MorseMode};
-use rmk::{a, k, mo, tg, to, ltp};
-
+use rmk::types::action::{EncoderAction, KeyAction, MorseMode, MorseProfile};
+use rmk::{a, k, ltp, mo, tg, to};
 
 #[macro_export]
 macro_rules! wm {
@@ -146,7 +145,5 @@ pub const fn get_default_keymap() -> [[[KeyAction; COL]; ROW]; NUM_LAYER] {
 }
 
 pub const fn get_default_encoder_map() -> [[EncoderAction; NUM_ENCODER]; NUM_LAYER] {
-    [
-        []; NUM_LAYER
-    ]
+    [[]; NUM_LAYER]
 }
